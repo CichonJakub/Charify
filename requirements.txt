@@ -1,23 +1,4 @@
 asgiref==3.4.1
-backports.entry-points-selectable==1.1.1
-certifi==2019.9.11
-chardet==3.0.4
-cplex==20.1.0.0
-distlib==0.3.3
 Django==3.2.9
-docloud==1.0.375
-docplex==2.18.200
-filelock==3.4.0
-idna==2.8
-pbr==5.8.0
-pipenv==2021.11.15
-platformdirs==2.4.0
 pytz==2021.3
-requests==2.22.0
-six @ file:///AppleInternal/BuildRoot/Library/Caches/com.apple.xbs/Sources/python3/python3-103/six-1.15.0-py2.py3-none-any.whl
 sqlparse==0.4.2
-stevedore==3.5.0
-urllib3==1.25.11
-virtualenv==20.10.0
-virtualenv-clone==0.5.7
-virtualenvwrapper==4.8.4
