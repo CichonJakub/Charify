@@ -1,8 +1,21 @@
 from django.db import models
 
 
-#  ----------------- still to work on :) ---------- in CLF 31/33
+class Event(models.Model):
+    title = models.CharField()
+    description = models.TextField()
+    address = models.TextField()
+    organizer = models.CharField()
+    organizer_type = models.CharField()
+    phone_number = models.CharField()
+    email = models.EmailField()
+    number_of_people = models.IntegerField()
+    event_date = models.DateTimeField()
+    published_date = models.DateTimeField(auto_now_add=True)
+    tags = models.CharField()
+    photo = models.ImageField()
 
+#  ----------------- still to work on :) ---------- in CLF 31/33
 
 
 # class Question(models.Model):
