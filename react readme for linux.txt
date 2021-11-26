@@ -28,3 +28,5 @@
 	npm start
 4.Check operation in browser
 	http://localhost:3000 or http://<SERVER_IP_ADDR>:3000
+5.Install bootstrap
+	npm install bootstrap
