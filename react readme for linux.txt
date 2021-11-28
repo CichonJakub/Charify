@@ -26,9 +26,9 @@
 3.Run the app	
 	cd charify-react
 	npm start
-4.Check operation in browser
-	http://localhost:3000 or http://<SERVER_IP_ADDR>:3000
-5.Install bootstrap
+4.Install bootstrap
 	npm install bootstrap
-6.Install axios (for proxy)
+5.Install axios (for proxy)
 	npm install axios
+6.Check operation in browser
+	http://localhost:3000 or http://<SERVER_IP_ADDR>:3000
