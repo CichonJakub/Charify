@@ -30,3 +30,5 @@
 	http://localhost:3000 or http://<SERVER_IP_ADDR>:3000
 5.Install bootstrap
 	npm install bootstrap
+6.Install axios (for proxy)
+	npm install axios

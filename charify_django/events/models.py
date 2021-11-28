@@ -13,7 +13,7 @@ class Event(models.Model):
     event_date = models.DateTimeField()
     published_date = models.DateTimeField(auto_now_add=True)
     tags = models.CharField(max_length=150)
-    photo = models.ImageField() ## na razie powuje bledy bo jest zawsze wymagae... + nie ma gdzie trzymac obrazka
+    photo = models.ImageField(blank=True)
 
     def _str_(self):
         return self.title
