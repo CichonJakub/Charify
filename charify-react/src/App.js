@@ -32,9 +32,13 @@ class App extends React.Component {
   render() {
 
     const single_event = this.state.charify_event
-
     return (
       <div className="container">
+        <div class= "topnav">
+          <a class = "active" href="#wydarzenia">Wszystkie wydarzenia</a>
+          <a href = "#onas">O nas</a>
+          <a href="#kontakt">kontakt</a>
+        </div>
         <div key={this.state.qid} id={this.state.qid}>
           <div id="task-container">
             <div id="form-wrapper">
