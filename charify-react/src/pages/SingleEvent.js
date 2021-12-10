@@ -35,15 +35,6 @@ class SingleEvent extends React.Component {
         return (
             <div className="container">
                 <div key={this.state.qid} id={this.state.qid}>
-                    <div id="task-container">
-                        <div id="form-wrapper">
-                            <header className="title">
-                                <h1>
-                                    <text>CHARIFY alpha 0.1</text>
-                                </h1>
-                            </header>
-                        </div>
-                    </div>
                     {single_event !== null ?
                         <div id="task-container">
                             <div id="form-wrapper">
@@ -81,8 +72,9 @@ class SingleEvent extends React.Component {
                                 : <div></div>}
                             <form >
                                 <div className="task-wrapper flex-wrapper">
-                                    <input className="flex-button" type="number" value={this.state.input_value} onChange={(inp_val) => { this.setState({ input_value: parseInt(inp_val.currentTarget.value) }) }} />
-                                    <button type="button" className="flex-button" onClick={() => { this.setState({ qid: this.state.input_value }, this.fetchData) }}>Przejdz do rekordu o podanym ID</button>
+                                    <p>Wydarzenie nieaktualne</p>
+                                    {/* <input className="flex-button" type="number" value={this.state.input_value} onChange={(inp_val) => { this.setState({ input_value: parseInt(inp_val.currentTarget.value) }) }} />
+                                    <button type="button" className="flex-button" onClick={() => { this.setState({ qid: this.state.input_value }, this.fetchData) }}>Przejdz do rekordu o podanym ID</button> */}
                                 </div>
                             </form>
                         </div>
