@@ -8,16 +8,21 @@ import {
 } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import SingleEvent from "./pages/SingleEvent";
+import Footer from './pages/Footer';
+import Navbar from './pages/Navbar';
 
 class App extends React.Component {
 
     render() {
         return (
             <BrowserRouter>
+                <Navbar/>
                 <Routes>
+                    {/* <Route exact path="/" element={<Footer />} /> */}
                     <Route exact path="/" element={<Homepage />} />
                     <Route path="/6" element={<SingleEvent eventId="6" />} />
                 </Routes>
+                <Footer/>
             </BrowserRouter>
         )
     }
