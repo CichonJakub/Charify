@@ -1,5 +1,5 @@
 .footer-container {
-    background-color: #ffba3bda;
+    background: linear-gradient(90deg, #ffba3bda 0%, rgba(253, 106, 38, 0.932) 100%);
     padding: 4rem 0 2rem 0;
     display: flex;
     flex-direction: column;
