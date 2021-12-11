@@ -28,40 +28,41 @@ function Navbar() {
       <>
         <nav className='navbar'>
           <div className='navbar-container'>
+              <img src={"./logo.webp"}/>
               <p>Charify</p>
             <ul className={click ? 'nav-menu active' : 'nav-menu'}>
               <li className='nav-item'>
-                <div to='/' className='nav-links' onClick={closeMobileMenu}>
+                <Link to='/' className='nav-links' onClick={closeMobileMenu}>
                   Strona główna
-                </div>
+                </Link>
               </li>
               <li className='nav-item'>
-                <div
-                  to='/services'
+                <Link
+                  to='/form'
                   className='nav-links'
                   onClick={closeMobileMenu}
                 >
                   Zgłoś wydarzenie
-                </div>
+                </Link>
               </li>
               <li className='nav-item'>
-                <div
-                  to='/products'
+                <Link
+                  to='/Aboutus'
                   className='nav-links'
                   onClick={closeMobileMenu}
                 >
                   O nas
-                </div>
+                </Link>
               </li>
   
               <li>
-                <div
+                <Link
                   to='/sign-up'
                   className='nav-links-mobile'
                   onClick={closeMobileMenu}
                 >
                   Zaloguj się
-                </div>
+                </Link>
               </li>
             </ul>
             {button && <Button buttonStyle='btn--outline'>ZALOGUJ SIĘ</Button>}

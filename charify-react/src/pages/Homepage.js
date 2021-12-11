@@ -3,6 +3,8 @@ import Carousel from 'react-bootstrap/Carousel'
 import { Container } from 'react-bootstrap'
 import "bootstrap/dist/css/bootstrap.css";
 import { Link } from "react-router-dom";
+import EventItem from './EventItem';
+import './Homepage.css';
 
 export default function Homepage(){
 
@@ -13,7 +15,7 @@ export default function Homepage(){
             {/*    <button type="button" className="button" onClick={() => { this.setState({ qid: this.state.input_value }, this.fetchData) }}>Przejdz do rekordu o podanym ID</button>*/}
             {/*</div>*/}
 
-            <Container>
+            {/* <Container>
                 <h4>Najciekawsze wydarzenia</h4>
                 <Carousel fade>
                     <Carousel.Item interval={3500}>
@@ -64,7 +66,43 @@ export default function Homepage(){
                         </p>
                     </Link>
                 </span>
-            </Container>
+            </Container> */}
+      <div className='cards'>
+        <h1>Ostatnie najciekawsze wydarzenia</h1>
+      <div className='cards__container'>
+        <div className='cards__wrapper'>
+          <ul className='cards__items'>
+            <EventItem
+              src='./event1.jpg'
+              text='Event1'
+              path='/1'
+            />
+            <EventItem
+              src='./event2.jpg'
+              text='Event2'
+              path='/2'
+            />
+          </ul>
+          <ul className='cards__items'>
+            <EventItem
+              src='./event3.jpg'
+              text='Event3'
+              path='/3'
+            />
+            <EventItem
+              src='./event1.jpg'
+              text='Event4'
+              path='/4'
+            />
+            <EventItem
+              src='./event2.jpg'
+              text='Event5'
+              path='/5'
+            />
+          </ul>
+        </div>
+      </div>
+    </div>
         </>
     ); 
 }
