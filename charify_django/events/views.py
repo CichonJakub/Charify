@@ -11,5 +11,3 @@ class EventView(viewsets.ModelViewSet):
     queryset = Event.objects.all()
 
 
-
-
