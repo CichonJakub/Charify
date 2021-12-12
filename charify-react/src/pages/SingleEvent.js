@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from "axios";
-import '../App.css'
+import './SingleEvent.css'
 import {useLocation} from 'react-router-dom';
 
 function SingleEvent(){
@@ -14,21 +14,20 @@ function SingleEvent(){
                 {single_event !== null ?
                     <div id="task-container">
                         <div id="form-wrapper">
-                            <div className="element"><h5>Nazwa eventu:</h5><span>{single_event.title}</span></div>
-                            <div className="element"><h5>Miejsce:</h5><span>{single_event.address}</span></div>
-                            <div className="element"><h5>Organizator:</h5><span>{single_event.organizer}</span></div>
-                            <div className="element"><h5>Typ organizatora:</h5><span>{single_event.organizer_type}</span></div>
-                            <div className="element"><h5>Numer telefonu:</h5><span>{single_event.phone_number}</span></div>
-                            <div className="element"><h5>Email:</h5><span>{single_event.email}</span></div>
-                            <div className="element"><h5>Liczba potrzebnych osob:</h5><span>{single_event.number_of_people}</span></div>
-                            <div className="element"><h5>Data:</h5><span>{single_event.event_date}</span></div>
-                            <div className="element"><h5>Tagi:</h5><span>{single_event.tags}</span></div>
+                            <div className="event_title"><h1>{single_event.title}</h1></div>
+                            <div className="element"><h3>Miejsce:</h3><h2>{single_event.address}</h2></div>
+                            <div className="element"><h3>Organizator:</h3><h2>{single_event.organizer}</h2></div>
+                            <div className="element"><h3>Typ organizatora:</h3><h2>{single_event.organizer_type}</h2></div>
+                            <div className="element"><h3>Numer telefonu:</h3><h2>{single_event.phone_number}</h2></div>
+                            <div className="element"><h3>Email:</h3><h2>{single_event.email}</h2></div>
+                            <div className="element"><h3>Liczba potrzebnych wolontariuszy:</h3><h2>{single_event.number_of_people}</h2></div>
+                            <div className="element"><h3>Data:</h3><h2>{single_event.event_date}</h2></div>
+                            <div className="element"><h3>#Tagi:</h3><h2>{single_event.tags}</h2></div>
                             <div id="form-wrapper">
                                 <header className="title">
-                                    <h2>Opis</h2>
-                                    <text>{single_event.description}</text>
+                                    <h3>Opis</h3>
                                 </header>
-                            </div>
+                                <div className="opis">{single_event.description}</div>                            </div>
                         </div>
                         {/*<div id="form-wrapper">*/}
                         {/*    <form >*/}
