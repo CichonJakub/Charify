@@ -28,7 +28,7 @@ function Navbar() {
       <>
         <nav className='navbar'>
           <div className='navbar-container'>
-              <img src={"./logo.webp"}/>
+              <img id ="logo"src={"./logo.webp"}/>
               <p>Charify</p>
             <ul className={click ? 'nav-menu active' : 'nav-menu'}>
               <li className='nav-item'>
