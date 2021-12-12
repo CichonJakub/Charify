@@ -83,7 +83,7 @@ render() {
                      <div className='cards__wrapper'>
                          <ul className='cards__items'>
                              <EventItem
-                             src='./event1.jpg'
+                            //  src='./event1.jpg'
                              single_event={single_event}/>
                          </ul>
                      </div>

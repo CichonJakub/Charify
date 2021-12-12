@@ -12,7 +12,7 @@ function EventItem(props) {
             <img
               className='cards__item__img'
               alt='Travel Image'
-              src={props.src}
+              src={single_event.photo}
             />
           </figure>
           <div className='cards__item__info'>
