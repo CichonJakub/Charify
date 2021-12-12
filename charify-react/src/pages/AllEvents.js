@@ -84,8 +84,7 @@ render() {
                          <ul className='cards__items'>
                              <EventItem
                              src='./event1.jpg'
-                             text={single_event.title}
-                             path='/1'                             />
+                             single_event={single_event}/>
                          </ul>
                      </div>
                  </div> 

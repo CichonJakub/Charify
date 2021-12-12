@@ -21,7 +21,7 @@ class App extends React.Component {
                 <Routes>
                     {/* <Route exact path="/" element={<Footer />} /> */}
                     <Route exact path="/" element={<AllEvents />} />
-                    <Route path="/6" element={<SingleEvent eventId="6" />} />
+                    <Route path="/events/:id" element={<SingleEvent />} />
                     
                 </Routes>
                 <Footer/>
