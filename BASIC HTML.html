@@ -1,0 +1,136 @@
+<html>
+<head>
+<title></title>
+<!-- Apply styles to html elements -->
+<style>
+*{
+margin:0; padding:0; boxsizing:border-box;
+}
+header{
+width: 100%; height: 50vh;
+background-color: white;
+background-repeat: no-repeat;
+background-size: cover;
+}
+footer{
+width: 100%; height: 50vh;
+justify-content: center;
+align-items: center;
+text-align: center;
+}
+nav{
+width: 100%; height: 15vh;
+background: Violet;
+display: flex; 
+justify-content: space-between;
+align-items: center;
+}
+nav .mainmenu{
+width: 40%;
+display: flex; justify-content: space-around;
+}
+main{
+width: 100%; height: 85vh;
+background: DodgerBlue;
+display: flex; justify-content: center;
+align-items: center;
+text-align: center;
+}
+main1{
+width: 100%; height: 40vh; 
+background: DodgerBlue;
+display: flex; justify-content: space-around;
+align-items: center;
+text-align: center;
+}
+main2{
+width: 100%; height: 0vh;
+background: DodgerBlue;
+display: flex; justify-content: space-around;
+align-items: center;
+text-align: center;
+}
+main3{
+width: 100%; height: 20vh;
+background: DodgerBlue;
+weight: 15vh;
+display: flex; justify-content: space-around;
+align-items: center;
+text-align: center;
+}
+section h3{
+letter-spacing: 3px; font-weight: 200;
+}
+section h1{
+text-transform: uppercase;
+}
+section div{
+animation:changeborder 10s infinite linear;
+border: 7px solid red;
+}
+@keyframes changeborder{
+0%
+20%
+40%
+}
+</style>
+</head>
+<body>
+<!--Let us create a simple menu using the navigation tags-->
+<!--Use header to indicate that manu will be a part of header -->
+<header>
+<nav>
+<div class = "logo" <h3 style="color:white;">Charify</h3></div>
+<!--Lets define the menu items now-->
+<div class = "mainmenu">
+<a href="https://localhost:8080"><mainmenu style="color:black;">Wszystkie wydarzenia</a>
+<a href="https://localhost:8080"><mainmenu style="color:black;">O nas</a>
+<a href="https://localhost:8080"><mainmenu style="color:black;">Zaloguj</a>
+</div>
+</nav>
+<!--Let us create the main section now, if you are not using html5, use div tags-->
+<main>
+<section>
+<!--Check out the styling elements for this div class - change_text -->
+<h2 class = "change_text"><b>Corousel</b></div>
+<!--make text italic-->
+<!--create a button, if there is a form, you can specify an action on click-->
+<!--input type = button value = "view more"-->
+  <div class="topnav">
+<input type="text" placeholder="Jakiego wydarzenia szukasz?">
+</div>
+</section>
+</header>
+<main1>
+
+<div class = "change_text"><b>Wydarzenie I</b></div>
+<div class = "change_text"><b>Wydarzenie II</b></div>
+<div class = "change_text"><b>Wydarzenie III</b></div>
+
+</main1>
+<main2>
+
+<div class = "change_text"><b>Lorem ipsum I</b></div>
+<div class = "change_text"><b>Lorem ipsum II</b></div>
+<div class = "change_text"><b>Lorem ipsum III</b></div>
+
+</main2>
+<main3>
+
+<input type = button value = "Czytaj więcej">
+<input type = button value = "Czytaj więcej">
+<input type = button value = "Czytaj więcej">
+
+</main3>
+
+<footer>
+<nav>
+<a href="https://localhost:8080"><mainmenu style="color:black;">Wszystkie wydarzenia</a>
+<a href="https://localhost:8080"><mainmenu style="color:black;">O nas</a>
+<a href="https://localhost:8080"><mainmenu style="color:black;">Zaloguj</a>
+</nav>
+</footer>
+
+</main>  
+</body>
+</html>
