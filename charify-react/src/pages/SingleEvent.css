@@ -1,0 +1,89 @@
+.App {
+    text-align: center;
+}
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+.App-header {
+    background: linear-gradient(90deg, rgba(54,217,182,1) 0%, rgba(32,152,126,1) 43%, rgba(0,212,255,1) 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+body{
+    /* background: rgb(54,217,182); */
+    /* background: linear-gradient(90deg, rgba(54,217,182,1) 0%, rgba(32,152,126,1) 43%, rgba(0,212,255,1) 100%); */
+}
+
+h1, h2, h3, h4, h5, p, span, strike{
+    font-family: 'Montserrat', sans-serif;
+}
+
+#task-container{
+    max-width:1200px;
+    margin:0 auto;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    background: linear-gradient(90deg, #ffba3bda 0%, rgba(253, 106, 38, 0.932) 100%);
+    /* background-color: #fff; */
+    margin-top:25px;
+    margin-bottom:25px;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+#form-wrapper{
+    top: 0rem;
+    border-bottom: 1px solid  #e9e9e9;
+    background-color: #fff;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+    padding:40px;
+}
+
+.test{
+    position: fixed;
+}
+
+.title{
+    text-align: center;
+}
+
+span{
+    text-align: center;
+    display:block;
+    width: 65%;
+}
+
+.flex-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.task-wrapper{
+    cursor: pointer;
+    border-bottom: 1px solid  #e9e9e9;
+    color: #686868;
+    margin:5px;
+    padding:20px;
+}
+
+.flex-button{
+    padding: 10px;
+    flex: 50%;
+}
+
+.element{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #000000;
+    padding: 10px;
+}
