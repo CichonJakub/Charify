@@ -20,7 +20,7 @@ class App extends React.Component {
                 <Navbar/>
                 <Routes>
                     {/* <Route exact path="/" element={<Footer />} /> */}
-                    <Route exact path="/" element={<AllEvents />} />
+                    <Route exact path="/" element={<AllEvents/>} />
                     <Route path="/events/:id" element={<SingleEvent />} />
                     
                 </Routes>
