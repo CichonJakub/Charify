@@ -1,7 +1,5 @@
 from django.db import models
 from django.core.exceptions import ValidationError
-from phonenumber_field.modelfields import PhoneNumberField
-#pip install django-phonenumber-field[phonenumbers]
 
 
 class Event(models.Model):
@@ -11,7 +9,7 @@ class Event(models.Model):
     address = models.TextField(required=True)
     organizer = models.CharField(max_length=150, required=True)
     organizer_type = models.CharField(max_length=150)
-    phone_number = models.PhoneNumberField()
+    phone_number = models.CharField(max_length=9)
     email = models.EmailField(validators=EmailValidator("Enter a valid email"))
     number_of_people = models.IntegerField(required=True,
                                            validators=MaxValueValidator(999, "Too much people"))
@@ -23,9 +21,6 @@ class Event(models.Model):
     def _str_(self):
         return self.title
 
-
-
-#  ----------------- still to work on :) ---------- in CLF 31/33
 
 
 # class Question(models.Model):
