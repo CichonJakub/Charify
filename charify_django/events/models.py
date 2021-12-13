@@ -1,27 +1,26 @@
-from django.db import models
-from django.core.exceptions import ValidationError
-from phonenumber_field.modelfields import PhoneNumberField
-#pip install django-phonenumber-field[phonenumbers]
+# from django.db import models
+# from django.core.exceptions import ValidationError
+# from phonenumber_field.modelfields import PhoneNumberField
+# #pip install django-phonenumber-field[phonenumbers]
 
 
-class Event(models.Model):
-    title = models.CharField(max_length=150,
-                            required=True)
-    description = models.TextField(required=True)
-    address = models.TextField(required=True)
-    organizer = models.CharField(max_length=150, required=True)
-    organizer_type = models.CharField(max_length=150)
-    phone_number = models.PhoneNumberField()
-    email = models.EmailField(validators=EmailValidator("Enter a valid email"))
-    number_of_people = models.IntegerField(required=True,
-                                           validators=MaxValueValidator(999, "Too much people"))
-    event_date = models.DateTimeField(required=True)
-    published_date = models.DateTimeField(auto_now_add=True)
-    tags = models.CharField(max_length=150)
-    photo = models.ImageField(blank=True)
+# class Event(models.Model):
+#     title = models.CharField(max_length=150, required=True)
+#     description = models.TextField(required=True)
+#     address = models.TextField(required=True)
+#     organizer = models.CharField(max_length=150, required=True)
+#     organizer_type = models.CharField(max_length=150)
+#     phone_number = models.PhoneNumberField()
+#     email = models.EmailField(validators=EmailValidator("Enter a valid email"))
+#     number_of_people = models.IntegerField(required=True,
+#                                            validators=MaxValueValidator(999, "Too much people"))
+#     event_date = models.DateTimeField(required=True)
+#     published_date = models.DateTimeField(auto_now_add=True)
+#     tags = models.CharField(max_length=150)
+#     photo = models.ImageField(blank=True, upload_to='images/')
 
-    def _str_(self):
-        return self.title
+#     def _str_(self):
+#         return self.title
 
 
 
@@ -31,9 +30,30 @@ class Event(models.Model):
 # class Question(models.Model):
 #     question_text = models.CharField(max_length=200)
 #     pub_date = models.DateTimeField('date published')
-#
-#
+
+
 # class Choice(models.Model):
 #     question = models.ForeignKey(Question, on_delete=models.CASCADE)
 #     choice_text = models.CharField(max_length=200)
 #     votes = models.IntegerField(default=0)
+
+from django.db import models
+
+
+class Event(models.Model):
+    title = models.CharField(max_length=150)
+    description = models.TextField()
+    address = models.TextField()
+    organizer = models.CharField(max_length=150)
+    organizer_type = models.CharField(max_length=150)
+    phone_number = models.CharField(max_length=150)
+    email = models.EmailField()
+    number_of_people = models.IntegerField()
+    event_date = models.DateTimeField()
+    published_date = models.DateTimeField(auto_now_add=True)
+    tags = models.CharField(max_length=150)
+    photo = models.ImageField(blank=True, upload_to='images/')
+
+    def _str_(self):
+        return self.title
+
