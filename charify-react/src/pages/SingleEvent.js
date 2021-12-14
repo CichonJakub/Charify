@@ -3,6 +3,7 @@ import axios from "axios";
 import './SingleEvent.css'
 import {useLocation} from 'react-router-dom';
 import EventItem from './EventItem';
+import CustomForm from './Form.js'
 
 function SingleEvent(){
     

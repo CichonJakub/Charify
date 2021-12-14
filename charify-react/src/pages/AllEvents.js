@@ -71,7 +71,7 @@ render() {
     // const single_event = this.state.charify_event
 
 
-    return this.state.charify_event.map((single_event) => (
+    return this.state.charify_event.reverse().map((single_event) => (
       <div> 
         <div key={this.state.qid} id={this.state.qid}>
             <div className='cards' >

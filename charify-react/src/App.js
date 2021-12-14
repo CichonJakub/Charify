@@ -11,7 +11,7 @@ import SingleEvent from "./pages/SingleEvent";
 import Footer from './pages/Footer';
 import Navbar from './pages/Navbar';
 import AllEvents from './pages/AllEvents';
-
+import CustomForm from './pages/Form'
 class App extends React.Component {
 
     render() {
@@ -22,6 +22,8 @@ class App extends React.Component {
                     {/* <Route exact path="/" element={<Footer />} /> */}
                     <Route exact path="/" element={<AllEvents/>} />
                     <Route path="/events/:id" element={<SingleEvent />} />
+                    <Route exact path="/form" element={<CustomForm requestType="post"
+                    articleID={null} />} />
                     
                 </Routes>
                 <Footer/>
