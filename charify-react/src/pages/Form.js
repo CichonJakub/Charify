@@ -27,7 +27,7 @@ class CustomForm extends React.Component {
     number_of_people: null,
     date: this.addHours(new Date(), 1).toISOString().slice(0, -8),
     tags: null,
-    image: null,
+    photo: null,
 
     redirect: false,
 
@@ -39,7 +39,7 @@ class CustomForm extends React.Component {
     let formIsValid = true;
 
     //title
-    if (typeof this.state.title !== "undefined") {
+    if (this.state.title !== null) {
       if (this.state.title.length < 10) {
         formIsValid = false;
         errors["title"] = "Nazwa jest za krótka";
@@ -47,7 +47,7 @@ class CustomForm extends React.Component {
     }
 
     //description
-    if (typeof this.state.description !== "undefined") {
+    if (this.state.description !== null) {
       if (this.state.description.length < 20) {
         formIsValid = false;
         errors["description"] = "Opis jest za krótki";
@@ -55,7 +55,7 @@ class CustomForm extends React.Component {
     }
 
     //address
-    if (typeof this.state.street !== "undefined") {
+    if (this.state.street !== null) {
       if (!this.state.street.match(/^(.+)\s(\S+)$/)) {
         formIsValid = false;
         errors["street"] = "Adres powinien być postaci: <nazwa ulicy> <numer>";
@@ -64,7 +64,7 @@ class CustomForm extends React.Component {
         errors["street"] = "Nazwa jest za krótka";
       }
 
-      if (typeof this.state.city !== "undefined") {
+      if (this.state.city !== null) {
         if (!this.state.city.match(/^[a-zA-Z]+$/)) {
           formIsValid = false;
           errors["city"] = "Tylko litery";
@@ -76,7 +76,7 @@ class CustomForm extends React.Component {
     }
 
     //organizer
-    if (typeof this.state.organizer !== "undefined") {
+    if (this.state.organizer !== null) {
       if (this.state.organizer.length < 3) {
         formIsValid = false;
         errors["organizer"] = "Nazwa jest za krótka";
@@ -84,7 +84,7 @@ class CustomForm extends React.Component {
     }
 
     //organizer_type
-    if (typeof this.state.organizer_type !== "undefined") {
+    if (this.state.organizer_type !== null) {
       if (!this.state.organizer_type.match(/^[a-zA-Z]+$/)) {
         formIsValid = false;
         errors["organizer_type"] = "Tylko litery";
@@ -95,7 +95,7 @@ class CustomForm extends React.Component {
     }
 
     //phone_number
-    if (typeof this.state.phone_number !== "undefined") {
+    if (this.state.phone_number !== null) {
       if (this.state.phone_number.length !== 9) {
         formIsValid = false;
         errors["phone_number"] = "Numer jest za krótki, podaj 9 cyfr";
@@ -103,7 +103,7 @@ class CustomForm extends React.Component {
     }
 
     //email
-    if (typeof this.state.email !== "undefined") {
+    if (this.state.email !== null) {
       let lastAtPos = this.state.email.lastIndexOf("@");
       let lastDotPos = this.state.email.lastIndexOf(".");
 
@@ -123,20 +123,58 @@ class CustomForm extends React.Component {
 
 
     //number_of_people
-    if (typeof this.state.number_of_people !== "undefined") {
-      if (this.state.number_of_people === 0) {
+    if (this.state.number_of_people !== null) {
+      if (this.state.number_of_people < 1) {
         formIsValid = false;
         errors["number_of_people"] = "Podaj liczbę potrzebnych osób. Większą od 0 :)";
       }
     }
 
+    //date
+    if (this.state.tags !== null) {
+      const date_now = this.addHours(new Date(), 1).toISOString().slice(0, 10);
+      const hours_now = parseInt(this.addHours(new Date(), 1).toISOString().slice(0, -8).slice(-5, -3)); // .slice(-13, -11)
+      const minutes_now = parseInt(this.addHours(new Date(), 1).toISOString().slice(0, -8).slice(-2)); // .slice(-10, -8)
+      const date_form = this.state.date.slice(0, 10);
+      const hours_form = parseInt(this.state.date.slice(-5, -3));
+      const minutes_form = parseInt(this.state.date.slice(-2));
+      if (date_now === date_form) {
+        if (hours_now > hours_form) {
+          formIsValid = false;
+          errors["date"] = "Nie możesz wstawić eventu z przeszłości :)";
+        } else if (hours_now === hours_form) {
+          if (minutes_now >= minutes_form) {
+            formIsValid = false;
+            errors["date"] = "Nie możesz wstawić eventu z przeszłości :)";
+          }else if((minutes_form - 30) < minutes_now){
+            formIsValid = false;
+            errors["date"] = "Data jest prawidłowa, ale daj przynajmniej pół godziny na zapisy :)";
+          }
+        }
+      }
+    }
+
+
     //tags
-    if (typeof this.state.tags !== "undefined") {
+    if (this.state.tags !== null) {
       if (this.state.tags.length < 4) {
         formIsValid = false;
         errors["tags"] = "Tekst jest za krótki";
       }
     }
+
+    //photo
+    if (this.state.photo !== null) {
+      if (!this.state.photo.name.match(/\.(jpg|jpeg|png|gif)$/)) {
+        formIsValid = false;
+        errors["photo"] = "Dodaj obrazek w jednym z formatów: .jpg/.jpeg/.png/.gif";
+      }
+      if (this.state.photo.size > 3145728) {
+        formIsValid = false;
+        errors["photo"] = "Plik jest za duży, maskymalny rozmiar: 3MB";
+      }
+    }
+
 
 
     this.setState({ errors: errors });
@@ -168,6 +206,10 @@ class CustomForm extends React.Component {
     return parsed_number;
   }
 
+  handleFileInput = (e) => {
+    this.setState({ photo: e.target.files[0] });
+  }
+
 
   handleFormSubmit = (event, requestType, articleID) => {
     /*event.preventDefault();*/
@@ -176,36 +218,21 @@ class CustomForm extends React.Component {
       alert("Formularz został prawidłowo przesłany. Wróć na stronę główną.");
 
 
-      let postObj =
+      let postObj = new FormData();
 
+      postObj.append("title", this.state.title);
+      postObj.append("description", this.state.description);
+      postObj.append("street", this.state.street);
+      postObj.append("city", this.state.city)
+      postObj.append("organizer", this.state.organizer);
+      postObj.append("organizer_type", this.state.organizer_type);
+      postObj.append("phone_number", this.parsePhoneNumber(this.state.phone_number));
+      postObj.append("email", this.state.email);
+      postObj.append("number_of_people", parseInt(this.state.number_of_people));
+      postObj.append("event_date", this.state.date);
+      postObj.append("tags", this.handleTags(this.state.tags));
+      postObj.append("photo", this.state.photo);
 
-    /*
-    new FormData();
-    
-    postObj.append("title", this.state.title);
-    postObj.append("description", this.state.description);
-    postObj.append("address", this.state.address);
-    postObj.append("organizer", this.state.organizer);
-    postObj.append("organizer_type", this.state.organizer_type);
-    postObj.append("phone_number", this.state.phone_number);
-    postObj.append("email", this.state.email);
-    postObj.append("number_of_people", this.state.number_of_people);
-    postObj.append("date", this.state.date);
-    postObj.append("tags", this.state.tags);
-    //postObj.append("image", this.state.image);
-    */{
-        title: `${this.state.title}`,
-        description: `${this.state.description}`,
-        street: `${this.state.street}`,
-        city: `${this.state.city}`,
-        organizer: `${this.state.organizer}`,
-        organizer_type: `${this.state.organizer_type}`,
-        phone_number: this.parsePhoneNumber(this.state.phone_number),
-        email: `${this.state.email}`,
-        number_of_people: `${parseInt(this.state.number_of_people)}`,
-        event_date: `${this.state.date}`,
-        tags: this.handleTags(this.state.tags),
-      };
 
 
       if (requestType === "post") {
@@ -259,7 +286,7 @@ class CustomForm extends React.Component {
           {/* title */}
           <div className="form_container">
             <FormControl fullWidth sx={{ m: 1 }} variant="standard" >
-              <TextField InputLabelProps={{ required: false }} //required
+              <TextField InputLabelProps={{ required: false }} required
                 id="title"
                 label="Nazwa eventu"
                 placeholder="podaj nazwę eventu"
@@ -277,7 +304,7 @@ class CustomForm extends React.Component {
           {/* description */}
           <div className="form_container">
             <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-              <TextField InputLabelProps={{ required: false }} //required
+              <TextField InputLabelProps={{ required: false }} required
                 id="description"
                 label="Opis"
                 multiline
@@ -299,7 +326,7 @@ class CustomForm extends React.Component {
             <Box component="form" sx={{ width: 1.0, display: 'flex', flexWrap: 'nowrap' }}>
               <FormControl sx={{ m: 1, float: 'left', width: 0.5 }} variant="standard">
                 <FormLabel>Adres</FormLabel>
-                <TextField InputLabelProps={{ required: false }} //required
+                <TextField InputLabelProps={{ required: false }} required
                   id="street"
                   label="Ulica, numer domu/mieszkania"
                   placeholder="podaj nazwę ulicy, oraz numer domu/mieszkania"
@@ -308,16 +335,16 @@ class CustomForm extends React.Component {
                   value={this.state.street}
                   onChange={(e) => this.handleChange("street", e)}
                   inputProps={{
-                    startAdornment: (
+                    /*startAdornment: (
                       <InputAdornment position="start">ul.</InputAdornment>
-                    ),
+                    ),*/
                     maxLength: 40,
                   }}
                 />
               </FormControl>
               <FormControl sx={{ m: 1, width: 0.5 }} variant="standard">
                 <FormLabel>&nbsp;</FormLabel>
-                <TextField InputLabelProps={{ required: false }} //required
+                <TextField InputLabelProps={{ required: false }} required
                   id="city"
                   label="Miejscowość"
                   placeholder="podaj nazwę miejscowości"
@@ -335,7 +362,7 @@ class CustomForm extends React.Component {
           {/* organizer */}
           <div className="form_container">
             <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-              <TextField InputLabelProps={{ required: false }} //required
+              <TextField InputLabelProps={{ required: false }} required
                 id="organizer"
                 label="Organizator"
                 placeholder="podaj nazwę organizatora"
@@ -353,7 +380,7 @@ class CustomForm extends React.Component {
           {/* organizer_type */}
           <div className="form_container">
             <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-              <TextField InputLabelProps={{ required: false }} //required
+              <TextField InputLabelProps={{ required: false }} required
                 id="organizer_type"
                 label="Typ organizatora"
                 placeholder="podaj typ organizatora"
@@ -371,7 +398,7 @@ class CustomForm extends React.Component {
           {/* phone_number */}
           <div className="form_container">
             <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-              <TextField InputLabelProps={{ required: false }} //required
+              <TextField InputLabelProps={{ required: false }} required
                 type="number"
                 id="phone_number"
                 label="Numer telefonu"
@@ -415,7 +442,7 @@ class CustomForm extends React.Component {
           {/* number_of_people */}
           <div className="form_container">
             <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-              <TextField InputLabelProps={{ required: false }} //required
+              <TextField InputLabelProps={{ required: false }} required
                 type="number"
                 id="number_of_people"
                 label="Liczba potrzebnych osób"
@@ -436,7 +463,7 @@ class CustomForm extends React.Component {
           {/* date - zablokowac dodawanie daty wczesniejszej niz "teraz" */}
           <div className="form_container">
             <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-              <TextField InputLabelProps={{ required: false }} //required
+              <TextField InputLabelProps={{ required: false }} required
                 focused
                 color="grey"
                 id="datetime"
@@ -445,8 +472,11 @@ class CustomForm extends React.Component {
                 //defaultValue={this.addHours(new Date(), 1)
                 //  .toISOString()
                 //  .slice(0, -8)}
+                error={this.state.errors["date"]}
+                helperText={this.state.errors["date"] ? this.state.errors["date"] : null}
                 value={this.state.date}
                 onChange={(e) => this.handleChange("date", e)}
+                inputProps={{ min: new Date().toISOString().slice(0, 11)+"00:00" }}
               />
             </FormControl>
           </div>
@@ -454,7 +484,7 @@ class CustomForm extends React.Component {
           {/* tags */}
           <div className="form_container">
             <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-              <TextField InputLabelProps={{ required: false }} //required
+              <TextField InputLabelProps={{ required: false }} required
                 id="tags"
                 label="Tagi"
                 placeholder="podaj tagi"
@@ -469,7 +499,7 @@ class CustomForm extends React.Component {
             </FormControl>
           </div>
 
-          {/* photo - todo
+          {/* photo */}
           <div className="form_container">
             <FormControl fullWidth sx={{ m: 1 }} variant="standard">
               <TextField InputLabelProps={{ required: false }} required
@@ -478,12 +508,12 @@ class CustomForm extends React.Component {
                 color="grey"
                 label="Zdjęcie eventu"
                 type="file"
-                helperText="maksymalnie 3 MB, format: .jpg lub .png"
-                value={this.state.image}
-                onChange={(e) => this.handleChange("image", e)}
+                error={this.state.errors["photo"]}
+                helperText={this.state.errors["photo"] ? this.state.errors["photo"] : "maksymalnie 3 MB, format: .jpg, .jpeg, .png lub .gif"}
+                onChange={(this.handleFileInput)}
               />
             </FormControl>
-          </div>*/}
+          </div>
 
           <div className="task-wrapper flex-wrapper">
             <button type="primary" htmlType="submit" className="flex-button">
