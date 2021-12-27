@@ -39,6 +39,7 @@ class CustomForm extends React.Component {
     let formIsValid = true;
 
     //title
+    errors["title"] = null;
     if (this.state.title !== null) {
       if (this.state.title.length < 10) {
         formIsValid = false;
@@ -47,6 +48,7 @@ class CustomForm extends React.Component {
     }
 
     //description
+    errors["description"] = null;
     if (this.state.description !== null) {
       if (this.state.description.length < 20) {
         formIsValid = false;
@@ -55,6 +57,7 @@ class CustomForm extends React.Component {
     }
 
     //address
+    errors["street"] = null;
     if (this.state.street !== null) {
       if (!this.state.street.match(/^(.+)\s(\S+)$/)) {
         formIsValid = false;
@@ -63,19 +66,22 @@ class CustomForm extends React.Component {
         formIsValid = false;
         errors["street"] = "Nazwa jest za krótka";
       }
+    }
 
-      if (this.state.city !== null) {
-        if (!this.state.city.match(/^[a-zA-Z]+$/)) {
-          formIsValid = false;
-          errors["city"] = "Tylko litery";
-        } else if (this.state.city.length < 3) {
-          formIsValid = false;
-          errors["city"] = "Nazwa jest za krótka";
-        }
+    errors["city"] = null;
+    if (this.state.city !== null) {
+      if (!this.state.city.match(/^[a-zA-ZęóąśłżźćńĘÓĄŚŁŻŹĆŃ]+$/)) {
+        formIsValid = false;
+        errors["city"] = "Tylko litery";
+      } else if (this.state.city.length < 3) {
+        formIsValid = false;
+        errors["city"] = "Nazwa jest za krótka";
       }
     }
 
+
     //organizer
+    errors["organizer"] = null;
     if (this.state.organizer !== null) {
       if (this.state.organizer.length < 3) {
         formIsValid = false;
@@ -84,8 +90,9 @@ class CustomForm extends React.Component {
     }
 
     //organizer_type
+    errors["organizer_type"] = null;
     if (this.state.organizer_type !== null) {
-      if (!this.state.organizer_type.match(/^[a-zA-Z]+$/)) {
+      if (!this.state.organizer_type.match(/^[a-zA-ZęóąśłżźćńĘÓĄŚŁŻŹĆŃ]+$/)) {
         formIsValid = false;
         errors["organizer_type"] = "Tylko litery";
       } else if (this.state.organizer_type.length < 3) {
@@ -95,6 +102,7 @@ class CustomForm extends React.Component {
     }
 
     //phone_number
+    errors["phone_number"] = null;
     if (this.state.phone_number !== null) {
       if (this.state.phone_number.length !== 9) {
         formIsValid = false;
@@ -103,6 +111,7 @@ class CustomForm extends React.Component {
     }
 
     //email
+    errors["email"] = null;
     if (this.state.email !== null) {
       let lastAtPos = this.state.email.lastIndexOf("@");
       let lastDotPos = this.state.email.lastIndexOf(".");
@@ -123,6 +132,7 @@ class CustomForm extends React.Component {
 
 
     //number_of_people
+    errors["number_of_people"] = null;
     if (this.state.number_of_people !== null) {
       if (this.state.number_of_people < 1) {
         formIsValid = false;
@@ -131,7 +141,8 @@ class CustomForm extends React.Component {
     }
 
     //date
-    if (this.state.tags !== null) {
+    errors["date"] = null;
+    if (this.state.date !== null) {
       const date_now = this.addHours(new Date(), 1).toISOString().slice(0, 10);
       const hours_now = parseInt(this.addHours(new Date(), 1).toISOString().slice(0, -8).slice(-5, -3)); // .slice(-13, -11)
       const minutes_now = parseInt(this.addHours(new Date(), 1).toISOString().slice(0, -8).slice(-2)); // .slice(-10, -8)
@@ -146,7 +157,7 @@ class CustomForm extends React.Component {
           if (minutes_now >= minutes_form) {
             formIsValid = false;
             errors["date"] = "Nie możesz wstawić eventu z przeszłości :)";
-          }else if((minutes_form - 30) < minutes_now){
+          } else if ((minutes_form - 30) < minutes_now) {
             formIsValid = false;
             errors["date"] = "Data jest prawidłowa, ale daj przynajmniej pół godziny na zapisy :)";
           }
@@ -154,8 +165,8 @@ class CustomForm extends React.Component {
       }
     }
 
-
     //tags
+    errors["tags"] = null;
     if (this.state.tags !== null) {
       if (this.state.tags.length < 4) {
         formIsValid = false;
@@ -164,6 +175,7 @@ class CustomForm extends React.Component {
     }
 
     //photo
+    errors["photo"] = null;
     if (this.state.photo !== null) {
       if (!this.state.photo.name.match(/\.(jpg|jpeg|png|gif)$/)) {
         formIsValid = false;
@@ -174,8 +186,6 @@ class CustomForm extends React.Component {
         errors["photo"] = "Plik jest za duży, maskymalny rozmiar: 3MB";
       }
     }
-
-
 
     this.setState({ errors: errors });
     return formIsValid;
@@ -476,7 +486,7 @@ class CustomForm extends React.Component {
                 helperText={this.state.errors["date"] ? this.state.errors["date"] : null}
                 value={this.state.date}
                 onChange={(e) => this.handleChange("date", e)}
-                inputProps={{ min: new Date().toISOString().slice(0, 11)+"00:00" }}
+                inputProps={{ min: new Date().toISOString().slice(0, 11) + "00:00" }}
               />
             </FormControl>
           </div>
