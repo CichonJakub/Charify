@@ -32,7 +32,8 @@ function Navbar() {
               <p>Charify</p>
             <ul className={click ? 'nav-menu active' : 'nav-menu'}>
               <li className='nav-item'>
-                <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                <Link to='/' className='nav-links' onClick={closeMobileMenu}
+                style={{ textDecoration: 'none' }}>
                   Strona główna
                 </Link>
               </li>
@@ -41,6 +42,7 @@ function Navbar() {
                   to='/form'
                   className='nav-links'
                   onClick={closeMobileMenu}
+                  style={{ textDecoration: 'none' }}
                 >
                   Zgłoś wydarzenie
                 </Link>
@@ -50,6 +52,7 @@ function Navbar() {
                   to='/Aboutus'
                   className='nav-links'
                   onClick={closeMobileMenu}
+                  style={{ textDecoration: 'none' }}
                 >
                   O nas
                 </Link>
@@ -60,6 +63,7 @@ function Navbar() {
                   to='/sign-up'
                   className='nav-links-mobile'
                   onClick={closeMobileMenu}
+                  style={{ textDecoration: 'none' }}
                 >
                   Zaloguj się
                 </Link>

@@ -123,7 +123,7 @@ class AllEvents extends React.Component {
 
 
         </div>
-        <div>
+        <div className="itemList">
           {this.state.charify_event.reverse().map((single_event) => (
             this.checkDisplay(single_event) ?
               <div>
@@ -134,11 +134,11 @@ class AllEvents extends React.Component {
                     <div className='cards'>
                       <div className='cards__container'>
                         <div className='cards__wrapper'>
-                          <ul className='cards__items'>
+                          {/* <ul className='cards__items'> */}
                             <EventItem
                               //  src='./event1.jpg'
                               single_event={single_event} />
-                          </ul>
+                          {/* </ul> */}
                         </div>
                       </div>
                     </div>
