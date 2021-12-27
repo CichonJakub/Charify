@@ -1,15 +1,14 @@
 import React from 'react';
-import axios from "axios";
-import './SingleEvent.css'
+import './SingleEvent.css';
 import {useLocation} from 'react-router-dom';
-import EventItem from './EventItem';
-import CustomForm from './Form.js'
 
 function SingleEvent(){
     
     const location = useLocation();
     console.log(location)
     const single_event = location.state.single_event;
+    const addr = single_event.street + ", " + single_event.city;
+    const datetime = single_event.event_date.slice(0,10)+ ", " + single_event.event_date.slice(11,-4);
     return (
         <div className="container">
             <div>
@@ -26,13 +25,13 @@ function SingleEvent(){
                             />
                             </figure>
                             </div>
-                            <div className="element"><h3>Miejsce:</h3><h2>{single_event.address}</h2></div>
+                            <div className="element"><h3>Miejsce:</h3><h2>{addr}</h2></div>
                             <div className="element"><h3>Organizator:</h3><h2>{single_event.organizer}</h2></div>
                             <div className="element"><h3>Typ organizatora:</h3><h2>{single_event.organizer_type}</h2></div>
                             <div className="element"><h3>Numer telefonu:</h3><h2>{single_event.phone_number}</h2></div>
                             <div className="element"><h3>Email:</h3><h2>{single_event.email}</h2></div>
                             <div className="element"><h3>Liczba potrzebnych wolontariuszy:</h3><h2>{single_event.number_of_people}</h2></div>
-                            <div className="element"><h3>Data:</h3><h2>{single_event.event_date}</h2></div>
+                            <div className="element"><h3>Data:</h3><h2>{datetime}</h2></div>
                             <div className="element"><h3>#Tagi:</h3><h2>{single_event.tags}</h2></div>
                             <div id="form-wrapper">
                                 <header className="title">
@@ -59,8 +58,6 @@ function SingleEvent(){
                         <form >
                             <div className="task-wrapper flex-wrapper">
                                 <p>Wydarzenie nieaktualne</p>
-                                {/* <input className="flex-button" type="number" value={this.state.input_value} onChange={(inp_val) => { this.setState({ input_value: parseInt(inp_val.currentTarget.value) }) }} />
-                                <button type="button" className="flex-button" onClick={() => { this.setState({ qid: this.state.input_value }, this.fetchData) }}>Przejdz do rekordu o podanym ID</button> */}
                             </div>
                         </form>
                     </div>
