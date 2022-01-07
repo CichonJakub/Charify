@@ -1,6 +1,8 @@
 import React from 'react';
 import './SingleEvent.css';
 import {useLocation} from 'react-router-dom';
+import './Homepage.css';
+
 
 function SingleEvent(){
     
@@ -16,14 +18,16 @@ function SingleEvent(){
                     <div id="task-container">
                         <div id="form-wrapper">
                             <div className="event_title"><h1>{single_event.title}</h1></div>
-                            <div className='cards'>
-                            <figure className='cards__item__pic-wrap'>
+                            <div className='cards_single_item'>
+                            {/* <figure className='cards__item__pic-wrap'> */}
                             <img
-                            className='cards__item__img'
-                            alt='Travel Image'
+                            className='img'
+                            // className='cards__item__img'
+                            // alt='Travel Image'
                             src={single_event.photo}
                             />
-                            </figure>
+                            {/* </figure> */}
+    
                             </div>
                             <div className="element"><h3>Miejsce:</h3><h2>{addr}</h2></div>
                             <div className="element"><h3>Organizator:</h3><h2>{single_event.organizer}</h2></div>

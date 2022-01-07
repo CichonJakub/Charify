@@ -7,6 +7,9 @@ import { Box, FormControl, FormLabel } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
 import { Navigate } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.css";
+import './Homepage.css';
+
+
 
 class CustomForm extends React.Component {
   addHours = (date, h) => {
@@ -281,8 +284,11 @@ class CustomForm extends React.Component {
       return <Navigate to="/" />
     }
     return (
-      <div>
+      <div className="container">
+        <div className="task-container">
+        <div clasName="form-wrapper">
         <Form
+          className="form_wrapper"
           onSubmit={(event) =>
             this.handleFormSubmit(
               event,
@@ -294,7 +300,7 @@ class CustomForm extends React.Component {
           <h1>Wypełnij formularz i zarejestruj swój event</h1>
 
           {/* title */}
-          <div className="form_container">
+          <div >
             <FormControl fullWidth sx={{ m: 1 }} variant="standard" >
               <TextField InputLabelProps={{ required: false }} required
                 id="title"
@@ -312,7 +318,7 @@ class CustomForm extends React.Component {
           </div>
 
           {/* description */}
-          <div className="form_container">
+          <div>
             <FormControl fullWidth sx={{ m: 1 }} variant="standard">
               <TextField InputLabelProps={{ required: false }} required
                 id="description"
@@ -332,7 +338,7 @@ class CustomForm extends React.Component {
           </div>
 
           {/* address */}
-          <div className="form_container">
+          <div>
             <Box component="form" sx={{ width: 1.0, display: 'flex', flexWrap: 'nowrap' }}>
               <FormControl sx={{ m: 1, float: 'left', width: 0.5 }} variant="standard">
                 <FormLabel>Adres</FormLabel>
@@ -370,7 +376,7 @@ class CustomForm extends React.Component {
           </div>
 
           {/* organizer */}
-          <div className="form_container">
+          <div >
             <FormControl fullWidth sx={{ m: 1 }} variant="standard">
               <TextField InputLabelProps={{ required: false }} required
                 id="organizer"
@@ -388,7 +394,7 @@ class CustomForm extends React.Component {
           </div>
 
           {/* organizer_type */}
-          <div className="form_container">
+          <div >
             <FormControl fullWidth sx={{ m: 1 }} variant="standard">
               <TextField InputLabelProps={{ required: false }} required
                 id="organizer_type"
@@ -406,7 +412,7 @@ class CustomForm extends React.Component {
           </div>
 
           {/* phone_number */}
-          <div className="form_container">
+          <div>
             <FormControl fullWidth sx={{ m: 1 }} variant="standard">
               <TextField InputLabelProps={{ required: false }} required
                 type="number"
@@ -432,7 +438,7 @@ class CustomForm extends React.Component {
           </div>
 
           {/* email */}
-          <div className="form_container">
+          <div >
             <FormControl fullWidth sx={{ m: 1 }} variant="standard">
               <TextField InputLabelProps={{ required: false }} required
                 id="email"
@@ -450,7 +456,7 @@ class CustomForm extends React.Component {
           </div>
 
           {/* number_of_people */}
-          <div className="form_container">
+          <div >
             <FormControl fullWidth sx={{ m: 1 }} variant="standard">
               <TextField InputLabelProps={{ required: false }} required
                 type="number"
@@ -471,7 +477,7 @@ class CustomForm extends React.Component {
           </div>
 
           {/* date - zablokowac dodawanie daty wczesniejszej niz "teraz" */}
-          <div className="form_container">
+          <div >
             <FormControl fullWidth sx={{ m: 1 }} variant="standard">
               <TextField InputLabelProps={{ required: false }} required
                 focused
@@ -492,7 +498,7 @@ class CustomForm extends React.Component {
           </div>
 
           {/* tags */}
-          <div className="form_container">
+          <div >
             <FormControl fullWidth sx={{ m: 1 }} variant="standard">
               <TextField InputLabelProps={{ required: false }} required
                 id="tags"
@@ -510,7 +516,7 @@ class CustomForm extends React.Component {
           </div>
 
           {/* photo */}
-          <div className="form_container">
+          <div >
             <FormControl fullWidth sx={{ m: 1 }} variant="standard">
               <TextField InputLabelProps={{ required: false }} required
                 id="photo"
@@ -531,6 +537,8 @@ class CustomForm extends React.Component {
             </button>
           </div>
         </Form>
+      </div>
+      </div>
       </div>
     );
   }

@@ -104,38 +104,25 @@ span{
   color: #686868;
   margin:5px;
   padding:20px;
+  justify-content: center;
 }
 
 .flex-button{
   padding: 10px;
+  max-width: 200px;
   flex: 50%;
-  border: 5px solid #0000007e;
-  background-color : transparent;
-  font-size: 15px;
-  border-radius: 20px;
+  border: 1px solid #000000;
+  background: linear-gradient(90deg, #ffba3bda 0%, rgba(253, 106, 38, 0.932) 100%);
+  font-size: 20px;
+  border-radius: 2px;
+  justify-content: center;
+
+}
+.flex-button:hover{
+  background: #ffffff;
 }
 
-.button {
-  transition: all .5s ease;
-  color: rgb(0, 0, 0);
-  border: 5px solid #0000007e;
-  font-family:'Montserrat', sans-serif;
-  text-transform: uppercase;
-  text-align: center;
-  line-height: 1;
-  font-size: 17px;
-  background-color : transparent;
-  padding: 10px;
-  outline: none;
-  border-radius: 20px;
-  flex: 5%;
-  padding-left: 10px;
-  margin-left: 20px;
-}
-.button:hover {
-  color: #001F3F;
-  background-color: #f38c2b8a;;
-}
+
 
 .element{
   display: flex;

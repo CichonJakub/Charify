@@ -60,9 +60,8 @@ function Navbar() {
   
               <li>
                 <Link
-                  to='/sign-up'
+                  to='/sign-up '
                   className='nav-links-mobile'
-                  onClick={closeMobileMenu}
                   style={{ textDecoration: 'none' }}
                 >
                   Zaloguj się

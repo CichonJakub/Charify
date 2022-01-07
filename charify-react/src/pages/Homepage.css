@@ -4,6 +4,7 @@
     /* flex-direction: column; */
 
   }
+
   
   h1 {
     text-align: center;
@@ -17,6 +18,20 @@
     place-items: center;
     text-align: center;
   }
+
+  #form-search{
+    margin: 20px;
+    width: 800px;
+    text-align: center;
+    font-size: 25px;
+    border: black;
+  }
+
+  #form-search-item{
+    font-size: 15px;
+
+  }
+
 
   .cards__container {
     display: flex;
@@ -117,6 +132,13 @@
     line-height: 24px;
   }
   
+
+  .cards__item__text__date {
+    color: #2e2727;
+    font-size: 14px;
+    line-height: 24px;
+  }
+
   @media only screen and (min-width: 1200px) {
     .content__blog__container {
       width: 84%;
@@ -133,4 +155,13 @@
     .cards__item {
       margin-bottom:1 rem;
     }
+  }
+
+  .search_drop_down{
+    font-size: 34px;
+
+  }
+
+  .FormControl{
+    font-size: 14px;
   }
