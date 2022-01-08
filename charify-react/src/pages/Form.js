@@ -598,11 +598,13 @@ class CustomForm extends React.Component {
                   </FormControl>
                 </div>
 
-                <div className="task-wrapper flex-wrapper">
-                  <button type="primary" htmlType="submit" className="flex-button">
-                    WYŚLIJ
-                  </button>
-                </div>
+                  <div className="row justify-content-center">
+                    <div className="col-sm-2" >
+                      <button type="primary" htmlType="submit" className="btn btn-warning btn-block">
+                        Wyślij
+                      </button>
+                    </div>
+                  </div>
               </Form>
 
             </div>

@@ -68,7 +68,9 @@ function Navbar() {
                 </Link>
               </li>
             </ul>
-            {button && <Button buttonStyle='btn--outline'>ZALOGUJ SIĘ</Button>}
+              <div style={{paddingBottom:5}}>
+            {button && <button style={{paddingBottom:10, paddingLeft:30, paddingRight:30, paddingTop:10, fontSize:20}} className="btn btn-warning btn-lg">Zaloguj się</button>}
+              </div>
           </div>
         </nav>
       </>
