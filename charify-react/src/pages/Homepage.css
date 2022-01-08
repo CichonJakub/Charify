@@ -1,6 +1,6 @@
 .cards {
     padding: 4rem;
-    background: rgb(255, 255, 255);
+    /* background: rgb(255, 255, 255); */
     /* flex-direction: column; */
 
   }
@@ -164,4 +164,8 @@
 
   .FormControl{
     font-size: 14px;
+  }
+
+  .main-back{
+    background: rgba(255, 255, 255, 0.699);
   }

@@ -9,6 +9,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { Button } from './Button';
 import TextField from "@mui/material/TextField";
+import MainSection from './MainSection';
 
 class AllEvents extends React.Component {
   state = {
@@ -96,8 +97,10 @@ class AllEvents extends React.Component {
     let unique = [];
     return (
       <div>
+        <MainSection/>
+      <div className='main-back'>
         <div className='cards__container'>
-          <FormControl variant="standard" sx={{ m: 5, width: 1,'& .MuiInputLabel-root':{fontSize:18}, '& .MuiSelect-select':{fontSize:16}}} id="form-search">
+          <FormControl variant="standard" sx={{ m: 5, width: 1,'& .MuiInputLabel-root':{fontSize:22}, '& .MuiSelect-select':{fontSize:16}}} id="form-search">
             <InputLabel id="demo-simple-select-helper-label"  >Wybierz miasto do odfiltrowania eventów</InputLabel>
             <Select
               labelId="demo-simple-select-standard-label"
@@ -154,6 +157,7 @@ class AllEvents extends React.Component {
               : null
           ))}
         </div>
+      </div>
       </div>
     )
   }

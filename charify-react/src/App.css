@@ -112,7 +112,7 @@ span{
   max-width: 200px;
   flex: 50%;
   border: 1px solid #000000;
-  background: linear-gradient(90deg, #ffba3bda 0%, rgba(253, 106, 38, 0.932) 100%);
+  background: rgba(253, 106, 38, 0.932);
   font-size: 20px;
   border-radius: 2px;
   justify-content: center;
