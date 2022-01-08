@@ -2,10 +2,11 @@ import React from 'react';
 import './SingleEvent.css';
 import {useLocation} from 'react-router-dom';
 import './Homepage.css';
+import "bootstrap/dist/css/bootstrap.css";
 
 
 function SingleEvent(){
-    
+
     const location = useLocation();
     console.log(location)
     const single_event = location.state.single_event;
@@ -18,30 +19,63 @@ function SingleEvent(){
                     <div id="task-container">
                         <div id="form-wrapper">
                             <div className="event_title"><h1>{single_event.title}</h1></div>
-                            <div className='cards_single_item'>
                             {/* <figure className='cards__item__pic-wrap'> */}
-                            <img
-                            className='img'
-                            // className='cards__item__img'
-                            // alt='Travel Image'
-                            src={single_event.photo}
-                            />
-                            {/* </figure> */}
-    
+                            <div className="row justify-content-center" style={{padding: 25}}>
+                                <div className="col-7">
+                                    <img
+                                        className="img-responsive rounded center-block d-block mx-auto"
+                                        // className='cards__item__img'
+                                        // alt='Travel Image'
+                                        src={single_event.photo}
+                                    />
+                                </div>
+
+                                {/* </figure> */}
+
                             </div>
-                            <div className="element"><h3>Miejsce:</h3><h2>{addr}</h2></div>
-                            <div className="element"><h3>Organizator:</h3><h2>{single_event.organizer}</h2></div>
-                            <div className="element"><h3>Typ organizatora:</h3><h2>{single_event.organizer_type}</h2></div>
-                            <div className="element"><h3>Numer telefonu:</h3><h2>{single_event.phone_number}</h2></div>
-                            <div className="element"><h3>Email:</h3><h2>{single_event.email}</h2></div>
-                            <div className="element"><h3>Liczba potrzebnych wolontariuszy:</h3><h2>{single_event.number_of_people}</h2></div>
-                            <div className="element"><h3>Data:</h3><h2>{datetime}</h2></div>
-                            <div className="element"><h3>#Tagi:</h3><h2>{single_event.tags}</h2></div>
                             <div id="form-wrapper">
+                                <table className="table">
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">Miejsce:</th>
+                                        <td class="text-right">{addr}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Organizator:</th>
+                                        <td className="text-right">{single_event.organizer}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Typ organizatora</th>
+                                        <td className="text-right">{single_event.organizer_type}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Numer telefonu:</th>
+                                        <td className="text-right">{single_event.phone_number}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Email:</th>
+                                        <td className="text-right">{single_event.email}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Liczba potrzebnych wolontariuszy:</th>
+                                        <td className="text-right">{single_event.number_of_people}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Data:</th>
+                                        <td className="text-right">{datetime}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">#Tagi:</th>
+                                        <td className="text-right">{single_event.tags}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
                                 <header className="title">
                                     <h3>Opis</h3>
                                 </header>
                                 <div className="opis">{single_event.description}</div>                            </div>
+
                         </div>
                         {/*<div id="form-wrapper">*/}
                         {/*    <form >*/}
@@ -70,6 +104,6 @@ function SingleEvent(){
             </div>
         </div>
     );
-    
+
 }
 export default SingleEvent;

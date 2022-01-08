@@ -111,3 +111,13 @@ span{
     text-align: center;
     justify-content: center;
 }
+.table{
+    font-size: calc(2vmin);
+    font-family: 'Montserrat', sans-serif;
+}
+
+@media screen and (min-width: 1200px) {
+    .table {
+        font-size: calc(6px + 2vmin);
+    }
+}

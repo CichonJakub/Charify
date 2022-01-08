@@ -8,6 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { Button } from './Button';
+import TextField from "@mui/material/TextField";
 
 class AllEvents extends React.Component {
   state = {
@@ -96,7 +97,7 @@ class AllEvents extends React.Component {
     return (
       <div>
         <div className='cards__container'>
-          <FormControl variant="standard" sx={{ m: 1, width: 1 }} id="form-search">
+          <FormControl variant="standard" sx={{ m: 5, width: 1,'& .MuiInputLabel-root':{fontSize:18}, '& .MuiSelect-select':{fontSize:16}}} id="form-search">
             <InputLabel id="demo-simple-select-helper-label"  >Wybierz miasto do odfiltrowania eventów</InputLabel>
             <Select
               labelId="demo-simple-select-standard-label"
@@ -105,7 +106,7 @@ class AllEvents extends React.Component {
               onChange={(e) => this.handleChange("city", e)}
               label="Wybierz miasto"
             >
-              <MenuItem value="dowolne" id="form-search-item" style={{}} >
+              <MenuItem value="dowolne" id="form-search-item">
                 dowolne
               </MenuItem >
               {this.state.charify_event.map((single_event) => (cities.push(single_event.city)))}
