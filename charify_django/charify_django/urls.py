@@ -20,6 +20,8 @@ from events import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from djangorestframework-simplejwt.views import obtain_jwt_token
+
 
 router = routers.DefaultRouter()
 router.register(r'events', views.EventView, 'event')
@@ -28,6 +30,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('token-auth/', obtain_jwt_token),
+    path('core/', include('core.urls'))
+
 ]
 
 if settings.DEBUG:
