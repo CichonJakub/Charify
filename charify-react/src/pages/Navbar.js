@@ -68,8 +68,11 @@ function Navbar() {
                 </Link>
               </li>
             </ul>
+              
               <div style={{paddingBottom:5}}>
-            {button && <button style={{paddingBottom:10, paddingLeft:30, paddingRight:30, paddingTop:10, fontSize:20}} className="btn btn-warning btn-lg">Zaloguj się</button>}
+                  <Link to='/sign-up'>
+                    {button && <button style={{paddingBottom:10, paddingLeft:30, paddingRight:30, paddingTop:10, fontSize:20}} className="btn btn-warning btn-lg">Zaloguj się</button>}
+                  </Link>
               </div>
           </div>
         </nav>
