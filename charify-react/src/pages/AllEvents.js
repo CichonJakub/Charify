@@ -99,10 +99,10 @@ class AllEvents extends React.Component {
       <div>
         <MainSection/>
       <div className='main-back'>
-        <div className='cards__container'>
-          <FormControl variant="standard" sx={{ m: 5, width: 1,'& .MuiInputLabel-root':{fontSize:22}, '& .MuiSelect-select':{fontSize:16}}} id="form-search">
-            <InputLabel id="demo-simple-select-helper-label"  >Wybierz miasto do odfiltrowania eventów</InputLabel>
-            <Select
+        <div className='cards__container' style={{paddingTop:10}}>
+          <FormControl variant="standard" sx={{ m: 5, size:"medium", width: 1,'& .MuiInputLabel-root':{fontSize:20}, '& .MuiSelect-select':{fontSize:20}}} id="form-search">
+            <InputLabel id="demo-simple-select-helper-label" style={{fontSize:22}}>Wybierz miasto do odfiltrowania eventów</InputLabel>
+            <Select style={{fontSize:24}}
               labelId="demo-simple-select-standard-label"
               id="demo-simple-select-standard"
               value={this.state.city}
