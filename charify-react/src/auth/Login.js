@@ -28,15 +28,15 @@ const Login = ({ login }) => {
     return(
         <div className='row justify-content-center'>
             <div className='col-md-3'>
-                <h1 style={{fontSize:30,fontWeight:"bold"}}>Sign In</h1>
-                <p style={{fontSize:18, textAlign:"center"}}>Sign into your account</p>
+                <h1 style={{fontSize:30,fontWeight:"bold"}}>Logowanie</h1>
+                <p style={{fontSize:18, textAlign:"center"}}>Zaloguj się na swoje konto</p>
                 <form onSubmit={e => onSubmit(e)}>
                     <div className='form-group'>
                         <input
                             style={{fontSize:18,padding:5}}
                             className='form-control'
                             type='name'
-                            placeholder='Name'
+                            placeholder='Nazwa użytkownika'
                             name='name'
                             value={name}
                             onChange={e => onChange(e)}
@@ -48,7 +48,7 @@ const Login = ({ login }) => {
                             style={{fontSize:18,padding:5}}
                             className='form-control'
                             type='password'
-                            placeholder='Password'
+                            placeholder='Hasło'
                             name='password'
                             value={password}
                             onChange={e => onChange(e)}
