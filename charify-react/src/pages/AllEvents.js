@@ -7,6 +7,9 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { Button } from './Button';
+import TextField from "@mui/material/TextField";
+import MainSection from './MainSection';
 
 class AllEvents extends React.Component {
   state = {
@@ -94,22 +97,24 @@ class AllEvents extends React.Component {
     let unique = [];
     return (
       <div>
-        <div className='cards__container'>
-          <FormControl variant="standard" sx={{ m: 1, width: 1 }}>
-            <InputLabel id="demo-simple-select-helper-label">Wybierz miasto do odfiltrowania eventów</InputLabel>
-            <Select
+        <MainSection/>
+      <div className='main-back'>
+        <div className='cards__container' style={{paddingTop:10}}>
+          <FormControl variant="standard" sx={{ m: 5, size:"medium", width: 1,'& .MuiInputLabel-root':{fontSize:20}, '& .MuiSelect-select':{fontSize:20}}} id="form-search">
+            <InputLabel id="demo-simple-select-helper-label" style={{fontSize:22}}>Wybierz miasto do odfiltrowania eventów</InputLabel>
+            <Select style={{fontSize:24}}
               labelId="demo-simple-select-standard-label"
               id="demo-simple-select-standard"
               value={this.state.city}
               onChange={(e) => this.handleChange("city", e)}
               label="Wybierz miasto"
             >
-              <MenuItem value="dowolne">
+              <MenuItem value="dowolne" id="form-search-item">
                 dowolne
-              </MenuItem>
+              </MenuItem >
               {this.state.charify_event.map((single_event) => (cities.push(single_event.city)))}
               {unique = cities.filter((x, i, a) => a.indexOf(x) == i)}
-              {unique.map((city, index) => (<MenuItem key={index} value={city}>{city}</MenuItem>))}
+              {unique.map((city, index) => (<MenuItem id="form-search-item" key={index} value={city}>{city}</MenuItem>))}
             </Select>
           </FormControl>
           {/*<button
@@ -123,7 +128,7 @@ class AllEvents extends React.Component {
 
 
         </div>
-        <div>
+        <div className="itemList">
           {this.state.charify_event.reverse().map((single_event) => (
             this.checkDisplay(single_event) ?
               <div>
@@ -134,11 +139,11 @@ class AllEvents extends React.Component {
                     <div className='cards'>
                       <div className='cards__container'>
                         <div className='cards__wrapper'>
-                          <ul className='cards__items'>
+                          {/* <ul className='cards__items'> */}
                             <EventItem
                               //  src='./event1.jpg'
                               single_event={single_event} />
-                          </ul>
+                          {/* </ul> */}
                         </div>
                       </div>
                     </div>
@@ -152,6 +157,7 @@ class AllEvents extends React.Component {
               : null
           ))}
         </div>
+      </div>
       </div>
     )
   }

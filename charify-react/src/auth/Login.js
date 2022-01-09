@@ -26,6 +26,7 @@ const Login = ({ login }) => {
     // redirecting to the home page
 
     return(
+        <div className='container'>
         <div className='row justify-content-center'>
             <div className='col-md-3'>
                 <h1 style={{fontSize:30,fontWeight:"bold"}}>Logowanie</h1>
@@ -66,8 +67,8 @@ const Login = ({ login }) => {
             {/*<p className='mt-3'>*/}
             {/*    Dont have an account? <Link*/}
             {/*</p>*/}
-
-
+            
+        </div>
         </div>
     )
 };

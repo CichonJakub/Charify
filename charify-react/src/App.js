@@ -23,7 +23,6 @@ class App extends React.Component {
                 <BrowserRouter>
                     <Navbar/>
                     <Routes>
-                        {/* <Route exact path="/" element={<Footer />} /> */}
                         <Route exact path="/" element={<AllEvents/>} />
                         <Route path="/events/:id" element={<SingleEvent />} />
                         <Route exact path="/form" element={<CustomForm requestType="post"
