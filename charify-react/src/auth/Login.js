@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'; //
-import { login } from '.../actions/auth';
+import { login } from '../actions/auth';
 import axios from 'axios';
+import './Login.css';
 
 
 const Login = ({ login }) => {
@@ -11,11 +12,11 @@ const Login = ({ login }) => {
         password: ''
     });
 
-    const { email, password } = fromData;
+    const { name, password } = formData;
 
-    const onChange = e => setFromData({ ...formData, [e.target.name]: e.target.value}) // changing only name in input field, rest data unchanged
+    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value}) // changing only name in input field, rest data unchanged
 
-    const onsSubmit = e => {
+    const onSubmit = e => {
         e.preventDefault();
 
         login(name, password);
@@ -25,35 +26,43 @@ const Login = ({ login }) => {
     // redirecting to the home page
 
     return(
-        <div className='container mt-5'>
-            <h1> Sign In</h1>
-            <p>Sign into your account</p>
-            <form onSubmit={e => onSubmit(e)}>
-                <div className='form-group'>
-                    <input
-                        className='form_control'
-                        type='name'
-                        placeholder='Name'
-                        name='name'
-                        value={name}
-                        onChange={e => onChange(e)}
-                        required
-                    />
-                </div>
-                <div className='form-group'>
-                    <input
-                        className='form_control'
-                        type='password'
-                        placeholder='Password'
-                        name='password'
-                        value={password}
-                        onChange={e => onChange(e)}
-                        minLength='6'
-                        required
-                    />
-                </div>
-                <button className='btn btn--primary' type='submit'>Login</button>
-            </form>
+        <div className='row justify-content-center'>
+            <div className='col-md-3'>
+                <h1 style={{fontSize:30,fontWeight:"bold"}}>Sign In</h1>
+                <p style={{fontSize:18, textAlign:"center"}}>Sign into your account</p>
+                <form onSubmit={e => onSubmit(e)}>
+                    <div className='form-group'>
+                        <input
+                            style={{fontSize:18,padding:5}}
+                            className='form-control'
+                            type='name'
+                            placeholder='Name'
+                            name='name'
+                            value={name}
+                            onChange={e => onChange(e)}
+                            required
+                        />
+                    </div>
+                    <div className='form-group'>
+                        <input
+                            style={{fontSize:18,padding:5}}
+                            className='form-control'
+                            type='password'
+                            placeholder='Password'
+                            name='password'
+                            value={password}
+                            onChange={e => onChange(e)}
+                            minLength='6'
+                            required
+                        />
+                    </div>
+                    <div className='row justify-content-center' style={{paddingBottom:15}}>
+                        <div className='col-12 text-center'>
+                        <button className='btn btn-warning btn--medium' type='submit'>Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
             {/*<p className='mt-3'>*/}
             {/*    Dont have an account? <Link*/}
             {/*</p>*/}
