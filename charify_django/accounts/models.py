@@ -15,25 +15,8 @@ class UserAccountManager(BaseUserManager):
         user.save()
 
         return user
-    # def create_superuser(self, username, name, password=None):
-    #     """
-    #     Creates and saves a superuser with the given email and password.
-    #     """
-    #     user = self.create_user(
-    #         username=username,
-    #         name=name,
-    #         password=password,
-    #     )
-    #     user.staff = True
-    #     user.admin = True
-    #     user.save(using=self._db)
-    #     if not user.has_perm('auth.view_user'):
-    #         raise PermissionDenied()
-    #     print(f'czy user ma pozwolenia: {user.has_perm("does.not.exist")}')
-    #     return user
 
     def create_superuser(self, username, password=None, **extra_fields):
-        """Create and save a SuperUser with the given email and password."""
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
 
@@ -45,7 +28,6 @@ class UserAccountManager(BaseUserManager):
         return self._create_user(username, password, **extra_fields)
 
     def _create_user(self, username, password=None, **extra_fields):
-        """Create and save a User with the given email and password."""
         user = self.model(username=username, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)

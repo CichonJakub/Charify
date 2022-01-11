@@ -1,3 +1,10 @@
 from django.contrib import admin
+from .models import UserAccount
 
-# Register your models here.
+#admin.site.unregister(DjangoGroup)
+
+
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('username', 'name', 'password')
+
+admin.site.register(UserAccount)
