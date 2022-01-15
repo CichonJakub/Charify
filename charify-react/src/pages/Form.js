@@ -1,9 +1,8 @@
-import "./SingleEvent.css";
 import React from "react";
 import axios from "axios";
 import { Form } from "simple-react-form";
 import TextField from "@mui/material/TextField";
-import { Box, FormControl, FormLabel } from "@mui/material";
+import {FormControl, FormLabel} from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
 import { Navigate } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.css";
@@ -13,8 +12,7 @@ class CustomForm extends React.Component {
     date.setHours(date.getHours() + h);
     return date;
   };
-
-
+  
   state = {
     title: null,
     description: null,
@@ -117,13 +115,13 @@ class CustomForm extends React.Component {
       let lastDotPos = this.state.email.lastIndexOf(".");
 
       if (
-        !(
-          lastAtPos < lastDotPos &&
-          lastAtPos > 0 &&
-          this.state.email.indexOf("@@") === -1 &&
-          lastDotPos > 2 &&
-          this.state.email.length - lastDotPos > 1
-        )
+          !(
+              lastAtPos < lastDotPos &&
+              lastAtPos > 0 &&
+              this.state.email.indexOf("@@") === -1 &&
+              lastDotPos > 2 &&
+              this.state.email.length - lastDotPos > 1
+          )
       ) {
         formIsValid = false;
         errors["email"] = "Email nie jest prawidłowy";
@@ -220,7 +218,6 @@ class CustomForm extends React.Component {
     this.setState({ photo: e.target.files[0] });
   }
 
-
   handleFormSubmit = (event, requestType, articleID) => {
     /*event.preventDefault();*/
 
@@ -248,21 +245,21 @@ class CustomForm extends React.Component {
       if (requestType === "post") {
 
         return axios.post("/api/events/", postObj/*, {headers: {'Content-Type': 'multipart/form-data'}}*/)
-          .then((res) => {
-            if (res.status === 201) {
-              this.setState({ redirect: true });
-            } else {
-              this.setState({ redirect: false });
-            }
-          });
+            .then((res) => {
+              if (res.status === 201) {
+                this.setState({ redirect: true });
+              } else {
+                this.setState({ redirect: false });
+              }
+            });
       } else if (requestType === "put") {
         return axios
-          .put(`http://127.0.0.1:8000/api/${articleID}/update/`, postObj)
-          .then((res) => {
-            if (res.status === 200) {
-              this.props.history.push(`/`);
-            }
-          });
+            .put(`http://127.0.0.1:8000/api/${articleID}/update/`, postObj)
+            .then((res) => {
+              if (res.status === 200) {
+                this.props.history.push(`/`);
+              }
+            });
       }
     } else {
       alert("Formularz jest błędnie wypełniony - popraw błędy i spróbuj ponownie.");
@@ -276,262 +273,345 @@ class CustomForm extends React.Component {
   }
   */
   render() {
+
     const redirecttohome = this.state.redirect;
     if (redirecttohome) {
       return <Navigate to="/" />
     }
     return (
-      <div>
-        <Form
-          onSubmit={(event) =>
-            this.handleFormSubmit(
-              event,
-              this.props.requestType,
-              this.props.articleID
-            )
-          }
-        >
-          <h1>Wypełnij formularz i zarejestruj swój event</h1>
+        <div className="container">
+          <div className="task-container">
+            <div className="form-wrapper" align="center">
+              <Form
+                  className="form_wrapper"
+                  class="w-75 p-3"
+                  onSubmit={(event) =>
+                      this.handleFormSubmit(
+                          event,
+                          this.props.requestType,
+                          this.props.articleID
+                      )
+                  }
+              >
+                <h1>Wypełnij formularz i zarejestruj swój event</h1>
 
-          {/* title */}
-          <div className="form_container">
-            <FormControl fullWidth sx={{ m: 1 }} variant="standard" >
-              <TextField InputLabelProps={{ required: false }} required
-                id="title"
-                label="Nazwa eventu"
-                placeholder="podaj nazwę eventu"
-                error={this.state.errors["title"]}
-                helperText={this.state.errors["title"] ? this.state.errors["title"] : "maksymalnie 50 znaków"}
-                value={this.state.title}
-                onChange={(e) => this.handleChange("title", e)}
-                inputProps={{
-                  maxLength: 50,
-                }}
-              />
-            </FormControl>
+                {/* title */}
+                <div>
+                  <FormControl fullWidth sx={{ m: 1 }} variant="standard" >
+                    <TextField InputLabelProps={{ required: false }} required
+                               sx={{
+                                 '& .MuiFormHelperText-root':{fontSize:10},
+                                 '& .MuiInputLabel-root':{fontSize:14, shrink:true},
+                                 '& .MuiOutlinedInput-root':{fontSize:14}
+                               }}
+                               id="title"
+                               label="Nazwa eventu"
+                               placeholder="podaj nazwę eventu"
+                               key="abc"
+                               error={this.state.errors["title"]}
+                               helperText={this.state.errors["title"] ? this.state.errors["title"] : "maksymalnie 50 znaków"}
+                               value={this.state.title}
+                               size="medium"
+                               onChange={(e) => this.handleChange("title", e)}
+                    />
+                  </FormControl>
+                </div>
+
+                {/* description */}
+                <div>
+                  <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+                    <TextField InputLabelProps={{ required: false }} required
+                               sx={{
+                                 '& .MuiFormHelperText-root':{fontSize:10},
+                                 '& .MuiInputLabel-root':{fontSize:14},
+                                 '& .MuiOutlinedInput-root':{fontSize:14}
+                               }}
+                               id="description"
+                               label="Opis"
+                               multiline
+                               rows={4}
+                               placeholder="podaj opis eventu"
+                               error={this.state.errors["description"]}
+                               helperText={this.state.errors["description"] ? this.state.errors["description"] : "maksymalnie 1000 znaków"}
+                               value={this.state.description}
+                               onChange={(e) => this.handleChange("description", e)}
+                               inputProps={{
+                                 maxLength: 1000,
+                               }}
+                    />
+                  </FormControl>
+                </div>
+
+                {/* address */}
+
+                <div class="row">
+                  <div class="col">
+                    <FormControl sx={{ m: 1, float: 'left', width: 1 }} variant="standard">
+                      <FormLabel sx={{textAlign: 'left', ml: 2, fontSize:14, mb:1}}>Adres</FormLabel>
+                      <TextField InputLabelProps={{ required: false }} required
+                                 sx={{
+                                   '& .MuiFormHelperText-root':{fontSize:10},
+                                   '& .MuiInputLabel-root':{fontSize:14},
+                                   '& .MuiOutlinedInput-root':{fontSize:14}
+                                 }}
+                                 id="street"
+                                 label="Ulica, numer domu/mieszkania"
+                                 placeholder="podaj nazwę ulicy, oraz numer domu/mieszkania"
+                                 error={this.state.errors["street"]}
+                                 helperText={this.state.errors["street"] ? this.state.errors["street"] : "maksymalnie 40 znaków"}
+                                 value={this.state.street}
+                                 onChange={(e) => this.handleChange("street", e)}
+                                 inputProps={{
+                                   /*startAdornment: (
+                                     <InputAdornment position="start">ul.</InputAdornment>
+                                   ),*/
+                                   maxLength: 40,
+                                 }}
+                      />
+                    </FormControl>
+                  </div>
+                  <div class="col">
+                    <FormControl sx={{ m: 1, width: 1 }} variant="standard">
+                      <FormLabel sx={{fontSize:14, mb:1}}>&nbsp;</FormLabel>
+                      <TextField InputLabelProps={{ required: false }} required
+                                 sx={{
+                                   '& .MuiFormHelperText-root':{fontSize:10},
+                                   '& .MuiInputLabel-root':{fontSize:14},
+                                   '& .MuiOutlinedInput-root':{fontSize:14}
+                                 }}
+
+                                 id="city"
+                                 label="Miejscowość"
+                                 placeholder="podaj nazwę miejscowości"
+                                 error={this.state.errors["city"]}
+                                 helperText={this.state.errors["city"] ? this.state.errors["city"] : "maksymalnie 20 znaków"}
+                                 value={this.state.city}
+                                 onChange={(e) => this.handleChange("city", e)}
+                                 inputProps={{
+                                   maxLength: 20,
+                                 }} />
+                    </FormControl>
+                  </div>
+                </div>
+
+                {/* organizer */}
+                <div >
+                  <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+                    <TextField InputLabelProps={{ required: false }} required
+                               sx={{
+                                 '& .MuiFormHelperText-root':{fontSize:10},
+                                 '& .MuiInputLabel-root':{fontSize:14},
+                                 '& .MuiOutlinedInput-root':{fontSize:14}
+                               }}
+
+                               id="organizer"
+                               label="Organizator"
+                               placeholder="podaj nazwę organizatora"
+                               error={this.state.errors["organizer"]}
+                               helperText={this.state.errors["organizer"] ? this.state.errors["organizer"] : "maksymalnie 50 znaków"}
+                               value={this.state.organizer}
+                               onChange={(e) => this.handleChange("organizer", e)}
+                               inputProps={{
+                                 maxLength: 50,
+                               }}
+                    />
+                  </FormControl>
+                </div>
+
+                {/* organizer_type */}
+                <div >
+                  <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+                    <TextField InputLabelProps={{ required: false }} required
+                               sx={{
+                                 '& .MuiFormHelperText-root':{fontSize:10},
+                                 '& .MuiInputLabel-root':{fontSize:14},
+                                 '& .MuiOutlinedInput-root':{fontSize:14}
+                               }}
+
+                               id="organizer_type"
+                               label="Typ organizatora"
+                               placeholder="podaj typ organizatora"
+                               error={this.state.errors["organizer_type"]}
+                               helperText={this.state.errors["organizer_type"] ? this.state.errors["organizer_type"] : "maksymalnie 30 znaków"}
+                               value={this.state.organizer_type}
+                               onChange={(e) => this.handleChange("organizer_type", e)}
+                               inputProps={{
+                                 maxLength: 30,
+                               }}
+                    />
+                  </FormControl>
+                </div>
+
+                {/* phone_number */}
+                <div>
+                  <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+                    <TextField InputLabelProps={{ required: false }} required
+                               sx={{
+                                 '& .MuiFormHelperText-root':{fontSize:10},
+                                 '& .MuiInputLabel-root':{fontSize:14},
+                                 '& .MuiOutlinedInput-root':{fontSize:14}
+                               }}
+
+                               type="number"
+                               id="phone_number"
+                               label="Numer telefonu"
+                               placeholder="podaj numer kontaktowy"
+                               error={this.state.errors["phone_number"]}
+                               helperText={this.state.errors["phone_number"] ? this.state.errors["phone_number"] : "9 cyfr, bez dodatkowych znaków"}
+                               onInput={(e) => {
+                                 e.target.value = Math.max(0, parseInt(e.target.value))
+                                     .toString()
+                                     .slice(0, 9);
+                               }}
+                               value={this.state.phone_number}
+                               onChange={(e) => this.handleChange("phone_number", e)}
+                               InputProps={{
+                                 startAdornment: (
+                                     <InputAdornment position="start">+48</InputAdornment>
+                                 ),
+                               }}
+                    />
+                  </FormControl>
+                </div>
+
+                {/* email */}
+                <div >
+                  <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+                    <TextField InputLabelProps={{ required: false }} required
+                               sx={{
+                                 '& .MuiFormHelperText-root':{fontSize:10},
+                                 '& .MuiInputLabel-root':{fontSize:14},
+                                 '& .MuiOutlinedInput-root':{fontSize:14}
+                               }}
+
+                               id="email"
+                               label="Email"
+                               placeholder="podaj adres email"
+                               error={this.state.errors["email"]}
+                               helperText={this.state.errors["email"] ? this.state.errors["email"] : "maksymalnie 30 znaków"}
+                               value={this.state.email}
+                               onChange={(e) => this.handleChange("email", e)}
+                               inputProps={{
+                                 maxLength: 30,
+                               }}
+                    />
+                  </FormControl>
+                </div>
+
+                {/* number_of_people */}
+                <div >
+                  <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+                    <TextField InputLabelProps={{ required: false }} required
+                               sx={{
+                                 '& .MuiFormHelperText-root':{fontSize:10},
+                                 '& .MuiInputLabel-root':{fontSize:14},
+                                 '& .MuiOutlinedInput-root':{fontSize:14}
+                               }}
+
+                               type="number"
+                               id="number_of_people"
+                               label="Liczba potrzebnych osób"
+                               placeholder="podaj liczbę potrzebnych osób"
+                               error={this.state.errors["number_of_people"]}
+                               helperText={this.state.errors["number_of_people"] ? this.state.errors["number_of_people"] : "max 999"}
+                               onInput={(e) => {
+                                 e.target.value = Math.max(0, parseInt(e.target.value))
+                                     .toString()
+                                     .slice(0, 3);
+                               }}
+                               value={this.state.number_of_people}
+                               onChange={(e) => this.handleChange("number_of_people", e)}
+                    />
+                  </FormControl>
+                </div>
+
+                {/* date - zablokowac dodawanie daty wczesniejszej niz "teraz" */}
+                <div >
+                  <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+                    <TextField InputLabelProps={{ required: false }} required
+                               sx={{
+                                 '& .MuiFormHelperText-root':{fontSize:10},
+                                 '& .MuiInputLabel-root':{fontSize:16},
+                                 '& .MuiOutlinedInput-root':{fontSize:14}
+                               }}
+
+                               focused
+                               color="grey"
+                               id="datetime"
+                               label="Data i czas wydarzenia"
+                               type="datetime-local"
+                        //defaultValue={this.addHours(new Date(), 1)
+                        //  .toISOString()
+                        //  .slice(0, -8)}
+                               error={this.state.errors["date"]}
+                               helperText={this.state.errors["date"] ? this.state.errors["date"] : null}
+                               value={this.state.date}
+                               onChange={(e) => this.handleChange("date", e)}
+                               inputProps={{ min: new Date().toISOString().slice(0, 11) + "00:00" }}
+                    />
+                  </FormControl>
+                </div>
+
+                {/* tags */}
+                <div >
+                  <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+                    <TextField InputLabelProps={{ required: false }} required
+                               sx={{
+                                 '& .MuiFormHelperText-root':{fontSize:10},
+                                 '& .MuiInputLabel-root':{fontSize:14},
+                                 '& .MuiOutlinedInput-root':{fontSize:14}
+                               }}
+
+                               id="tags"
+                               label="Tagi"
+                               placeholder="podaj tagi"
+                               error={this.state.errors["tags"]}
+                               helperText={this.state.errors["tags"] ? this.state.errors["tags"] : "maksymalnie 100 znaków"}
+                               value={this.state.tags}
+                               onChange={(e) => this.handleChange("tags", e)}
+                               inputProps={{
+                                 maxLength: 100,
+                               }}
+                    />
+                  </FormControl>
+                </div>
+
+                {/* photo */}
+                <div >
+                  <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+                    <TextField InputLabelProps={{ required: false }} required
+                               sx={{
+                                 '& .MuiFormHelperText-root':{fontSize:10},
+                                 '& .MuiInputLabel-root':{fontSize:16},
+                                 '& .MuiOutlinedInput-root':{fontSize:14}
+                               }}
+
+                               id="photo"
+                               focused
+                               color="grey"
+                               label="Zdjęcie eventu"
+                               type="file"
+                               error={this.state.errors["photo"]}
+                               helperText={this.state.errors["photo"] ? this.state.errors["photo"] : "maksymalnie 3 MB, format: .jpg, .jpeg, .png lub .gif"}
+                               onChange={(this.handleFileInput)}
+                    />
+                  </FormControl>
+                </div>
+
+                  <div className="row justify-content-center">
+                    <div className="col-sm-2" >
+                      <button type="primary" htmlType="submit" className="btn btn-warning btn-block">
+                        Wyślij
+                      </button>
+                    </div>
+                  </div>
+              </Form>
+
+            </div>
+
           </div>
 
-          {/* description */}
-          <div className="form_container">
-            <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-              <TextField InputLabelProps={{ required: false }} required
-                id="description"
-                label="Opis"
-                multiline
-                rows={4}
-                placeholder="podaj opis eventu"
-                error={this.state.errors["description"]}
-                helperText={this.state.errors["description"] ? this.state.errors["description"] : "maksymalnie 1000 znaków"}
-                value={this.state.description}
-                onChange={(e) => this.handleChange("description", e)}
-                inputProps={{
-                  maxLength: 1000,
-                }}
-              />
-            </FormControl>
-          </div>
-
-          {/* address */}
-          <div className="form_container">
-            <Box component="form" sx={{ width: 1.0, display: 'flex', flexWrap: 'nowrap' }}>
-              <FormControl sx={{ m: 1, float: 'left', width: 0.5 }} variant="standard">
-                <FormLabel>Adres</FormLabel>
-                <TextField InputLabelProps={{ required: false }} required
-                  id="street"
-                  label="Ulica, numer domu/mieszkania"
-                  placeholder="podaj nazwę ulicy, oraz numer domu/mieszkania"
-                  error={this.state.errors["street"]}
-                  helperText={this.state.errors["street"] ? this.state.errors["street"] : "maksymalnie 40 znaków"}
-                  value={this.state.street}
-                  onChange={(e) => this.handleChange("street", e)}
-                  inputProps={{
-                    /*startAdornment: (
-                      <InputAdornment position="start">ul.</InputAdornment>
-                    ),*/
-                    maxLength: 40,
-                  }}
-                />
-              </FormControl>
-              <FormControl sx={{ m: 1, width: 0.5 }} variant="standard">
-                <FormLabel>&nbsp;</FormLabel>
-                <TextField InputLabelProps={{ required: false }} required
-                  id="city"
-                  label="Miejscowość"
-                  placeholder="podaj nazwę miejscowości"
-                  error={this.state.errors["city"]}
-                  helperText={this.state.errors["city"] ? this.state.errors["city"] : "maksymalnie 20 znaków"}
-                  value={this.state.city}
-                  onChange={(e) => this.handleChange("city", e)}
-                  inputProps={{
-                    maxLength: 20,
-                  }} />
-              </FormControl>
-            </Box>
-          </div>
-
-          {/* organizer */}
-          <div className="form_container">
-            <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-              <TextField InputLabelProps={{ required: false }} required
-                id="organizer"
-                label="Organizator"
-                placeholder="podaj nazwę organizatora"
-                error={this.state.errors["organizer"]}
-                helperText={this.state.errors["organizer"] ? this.state.errors["organizer"] : "maksymalnie 50 znaków"}
-                value={this.state.organizer}
-                onChange={(e) => this.handleChange("organizer", e)}
-                inputProps={{
-                  maxLength: 50,
-                }}
-              />
-            </FormControl>
-          </div>
-
-          {/* organizer_type */}
-          <div className="form_container">
-            <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-              <TextField InputLabelProps={{ required: false }} required
-                id="organizer_type"
-                label="Typ organizatora"
-                placeholder="podaj typ organizatora"
-                error={this.state.errors["organizer_type"]}
-                helperText={this.state.errors["organizer_type"] ? this.state.errors["organizer_type"] : "maksymalnie 30 znaków"}
-                value={this.state.organizer_type}
-                onChange={(e) => this.handleChange("organizer_type", e)}
-                inputProps={{
-                  maxLength: 30,
-                }}
-              />
-            </FormControl>
-          </div>
-
-          {/* phone_number */}
-          <div className="form_container">
-            <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-              <TextField InputLabelProps={{ required: false }} required
-                type="number"
-                id="phone_number"
-                label="Numer telefonu"
-                placeholder="podaj numer kontaktowy"
-                error={this.state.errors["phone_number"]}
-                helperText={this.state.errors["phone_number"] ? this.state.errors["phone_number"] : "9 cyfr, bez dodatkowych znaków"}
-                onInput={(e) => {
-                  e.target.value = Math.max(0, parseInt(e.target.value))
-                    .toString()
-                    .slice(0, 9);
-                }}
-                value={this.state.phone_number}
-                onChange={(e) => this.handleChange("phone_number", e)}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">+48</InputAdornment>
-                  ),
-                }}
-              />
-            </FormControl>
-          </div>
-
-          {/* email */}
-          <div className="form_container">
-            <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-              <TextField InputLabelProps={{ required: false }} required
-                id="email"
-                label="Email"
-                placeholder="podaj adres email"
-                error={this.state.errors["email"]}
-                helperText={this.state.errors["email"] ? this.state.errors["email"] : "maksymalnie 30 znaków"}
-                value={this.state.email}
-                onChange={(e) => this.handleChange("email", e)}
-                inputProps={{
-                  maxLength: 30,
-                }}
-              />
-            </FormControl>
-          </div>
-
-          {/* number_of_people */}
-          <div className="form_container">
-            <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-              <TextField InputLabelProps={{ required: false }} required
-                type="number"
-                id="number_of_people"
-                label="Liczba potrzebnych osób"
-                placeholder="podaj liczbę potrzebnych osób"
-                error={this.state.errors["number_of_people"]}
-                helperText={this.state.errors["number_of_people"] ? this.state.errors["number_of_people"] : "max 999"}
-                onInput={(e) => {
-                  e.target.value = Math.max(0, parseInt(e.target.value))
-                    .toString()
-                    .slice(0, 3);
-                }}
-                value={this.state.number_of_people}
-                onChange={(e) => this.handleChange("number_of_people", e)}
-              />
-            </FormControl>
-          </div>
-
-          {/* date - zablokowac dodawanie daty wczesniejszej niz "teraz" */}
-          <div className="form_container">
-            <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-              <TextField InputLabelProps={{ required: false }} required
-                focused
-                color="grey"
-                id="datetime"
-                label="Data i czas wydarzenia"
-                type="datetime-local"
-                //defaultValue={this.addHours(new Date(), 1)
-                //  .toISOString()
-                //  .slice(0, -8)}
-                error={this.state.errors["date"]}
-                helperText={this.state.errors["date"] ? this.state.errors["date"] : null}
-                value={this.state.date}
-                onChange={(e) => this.handleChange("date", e)}
-                inputProps={{ min: new Date().toISOString().slice(0, 11) + "00:00" }}
-              />
-            </FormControl>
-          </div>
-
-          {/* tags */}
-          <div className="form_container">
-            <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-              <TextField InputLabelProps={{ required: false }} required
-                id="tags"
-                label="Tagi"
-                placeholder="podaj tagi"
-                error={this.state.errors["tags"]}
-                helperText={this.state.errors["tags"] ? this.state.errors["tags"] : "maksymalnie 100 znaków"}
-                value={this.state.tags}
-                onChange={(e) => this.handleChange("tags", e)}
-                inputProps={{
-                  maxLength: 100,
-                }}
-              />
-            </FormControl>
-          </div>
-
-          {/* photo */}
-          <div className="form_container">
-            <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-              <TextField InputLabelProps={{ required: false }} required
-                id="photo"
-                focused
-                color="grey"
-                label="Zdjęcie eventu"
-                type="file"
-                error={this.state.errors["photo"]}
-                helperText={this.state.errors["photo"] ? this.state.errors["photo"] : "maksymalnie 3 MB, format: .jpg, .jpeg, .png lub .gif"}
-                onChange={(this.handleFileInput)}
-              />
-            </FormControl>
-          </div>
-
-          <div className="task-wrapper flex-wrapper">
-            <button type="primary" htmlType="submit" className="flex-button">
-              WYŚLIJ
-            </button>
-          </div>
-        </Form>
-      </div>
+        </div>
     );
   }
 }
