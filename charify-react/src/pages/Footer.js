@@ -50,7 +50,7 @@ function Footer() {
                     
                     <h2 style={{paddingLeft:25, fontSize:20}}>Media społecznościowe</h2>
     
-                    <div className="row" style={{paddingTop:10, paddingLeft:25}}>
+                    {/* <div className="row" style={{paddingTop:10, paddingLeft:25}}>
                         <div className="col-sm-1">
                             <SocialMediaIconsReact borderColor="rgba(0,0,0,0.25)" icon="instagram"
                                                    iconColor="rgba(255,255,255,1)" iconSize="5" roundness="50%"
@@ -77,7 +77,7 @@ function Footer() {
                                                    url="https://some-website.com/my-social-media-url"
                                                    size="35"/>
                         </div>
-                    </div>
+                    </div> */}
                     {/*   <Link to='/'>Instagram</Link>*/}
                     {/*<Link to='/'>Facebook</Link>*/}
                     {/*<Link to='/'>Youtube</Link>*/}

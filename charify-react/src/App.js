@@ -22,9 +22,9 @@ class App extends React.Component {
                 <Routes>
                     {/* <Route exact path="/" element={<Footer />} /> */}
                     <Route exact path="/" element={<AllEvents/>} />
-                    <Route exact path="/sign-up" element={<Login/>} />
+                    <Route path="/sign-up" element={<Login/>} />
                     <Route path="/events/:id" element={<SingleEvent />} />
-                    <Route exact path="/form" element={<CustomForm requestType="post"
+                    <Route path="/form" element={<CustomForm requestType="post"
                     articleID={null} />} />
                     
                 </Routes>
