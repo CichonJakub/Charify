@@ -1,9 +1,51 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import { logout, checkAuthenticated, load_user } from "../actions/auth";
+import { connect } from 'react-redux';
 
-function Navbar() {
+function Navbar({ logout, isAuthenticated, user }) {
+    
+    const ifUserNull = () => {
+        if(user == null){
+            return(
+                <></>
+            )
+        } else{
+            return(
+                <li className='user-info' style={{color:"white", textAlign:"center", padding:"0.5rem 1rem", display:"flex", height:"100%", justifyContent:"center"}}>Witaj, {user.name}</li>
+            )
+        }
+    }
+    
+    const guestLinks = () => (
+        <Fragment>
+            <div style={{paddingBottom:5}}>
+                <Link to='/login'>
+                    {button && <button style={{paddingBottom:10, paddingLeft:30, paddingRight:30, paddingTop:10, fontSize:20}} className="btn btn-warning btn-lg">Zaloguj się</button>}
+                </Link>
+            </div>
+        </Fragment>
+    );
+    const authLinks = () => (
+        <Fragment>
+            <div style={{paddingBottom:5}}>
+                <Link to='/'>
+                    {button && <button style={{paddingBottom:10, paddingLeft:30, paddingRight:30, paddingTop:10, fontSize:20}} className="btn btn-warning btn-lg" onClick={logout}>Wyloguj się</button>}
+                </Link>
+            </div>
+        </Fragment>
+    );
+
+    if(user == null){
+        
+    }
+    const userInfo = () => (
+        <Fragment>
+            <a>{user}</a>
+        </Fragment>
+    )
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
   
@@ -21,7 +63,6 @@ function Navbar() {
     useEffect(() => {
       showButton();
     }, []);
-  
     window.addEventListener('resize', showButton);
   
     return (
@@ -32,7 +73,8 @@ function Navbar() {
               <p>Charify</p>
             <ul className={click ? 'nav-menu active' : 'nav-menu'}>
               <li className='nav-item'>
-                <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                <Link to='/' className='nav-links' onClick={closeMobileMenu}
+                style={{ textDecoration: 'none' }}>
                   Strona główna
                 </Link>
               </li>
@@ -41,6 +83,7 @@ function Navbar() {
                   to='/form'
                   className='nav-links'
                   onClick={closeMobileMenu}
+                  style={{ textDecoration: 'none' }}
                 >
                   Zgłoś wydarzenie
                 </Link>
@@ -50,26 +93,26 @@ function Navbar() {
                   to='/Aboutus'
                   className='nav-links'
                   onClick={closeMobileMenu}
+                  style={{ textDecoration: 'none' }}
                 >
-                  O nas
                 </Link>
               </li>
-  
-              <li>
-                <Link
-                  to='/sign-up'
-                  className='nav-links-mobile'
-                  onClick={closeMobileMenu}
-                >
-                  Zaloguj się
-                </Link>
-              </li>
+              
+                  {ifUserNull()}
+              
             </ul>
-            {button && <Button buttonStyle='btn--outline'>ZALOGUJ SIĘ</Button>}
+              
+              {isAuthenticated ? authLinks() : guestLinks()}
+              
           </div>
         </nav>
       </>
     );
   }
   
-  export default Navbar;
+  const mapStateToProps = state => ({
+      isAuthenticated: state.auth.isAuthenticated,
+      user: state.auth.user
+  });
+  
+  export default connect(mapStateToProps, { logout, load_user, checkAuthenticated })(Navbar);
