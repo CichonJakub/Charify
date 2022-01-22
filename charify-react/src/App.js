@@ -16,6 +16,7 @@ import AllEvents from './pages/AllEvents';
 import CustomForm from './pages/Form';
 import {Provider} from 'react-redux';
 import Store from './auth/Store';
+import User from './pages/User';
 class App extends React.Component {
 
     render() {
@@ -30,6 +31,7 @@ class App extends React.Component {
                             <Route exact path="/form" element={<CustomForm requestType="post"
                             articleID={null} />} />
                             <Route exact path="/login" element={<Login/>}/>
+                            <Route exact path="/user" element={<User/>}/>
                         </Routes>
                         <Footer/>
                     </Logic>

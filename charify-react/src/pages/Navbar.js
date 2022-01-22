@@ -14,7 +14,17 @@ function Navbar({ logout, isAuthenticated, user }) {
             )
         } else{
             return(
-                <li className='user-info' style={{color:"white", textAlign:"center", padding:"0.5rem 1rem", display:"flex", height:"100%", justifyContent:"center"}}>Witaj, {user.name}</li>
+                <li className='user-info' style={{color:"white", textAlign:"center", padding:"0.5rem 1rem", display:"flex", height:"100%", justifyContent:"center"}}>
+                  <Link
+                  to='/user'
+                  className='nav-links'
+                  onClick={closeMobileMenu}
+                  style={{ textDecoration: 'none' }}
+                  >
+                  Moje konto
+                  </Link>
+                </li>
+
             )
         }
     }
@@ -38,14 +48,14 @@ function Navbar({ logout, isAuthenticated, user }) {
         </Fragment>
     );
 
-    if(user == null){
+    // if(user == null){
         
-    }
-    const userInfo = () => (
-        <Fragment>
-            <a>{user}</a>
-        </Fragment>
-    )
+    // }
+    // const userInfo = () => (
+    //     <Fragment>
+    //         <a>{user}</a>
+    //     </Fragment>
+    // )
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
   
