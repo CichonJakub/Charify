@@ -41,7 +41,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     password = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True, max_length=255)
     is_staff = models.CharField(default=False, max_length=255)
-    UsersEvents = JSONField()
+    UsersEvents = models.CharField(max_length=140, default=False, blank=True)
 
 
     objects = UserAccountManager()
