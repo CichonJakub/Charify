@@ -23,6 +23,9 @@ export const checkAuthenticated = () => async dispatch => {
         });
         
         try{
+            console.log(localStorage.getItem('access'))
+            console.log(body)
+            console.log(config)
             const res = await axios.post(`http://localhost:8000/auth/jwt/verify/`, body, config)
             
             if (res.data.code !== 'token_not_valid'){
