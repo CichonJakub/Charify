@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin, BaseUserManager
 # Create your models here.
 from django.core.exceptions import PermissionDenied
+from django.contrib.postgres.fields import JSONField
 
 class UserAccountManager(BaseUserManager):
     def create_user(self, username, name, password=None):
@@ -40,7 +41,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     password = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True, max_length=255)
     is_staff = models.CharField(default=False, max_length=255)
-
+    UsersEvents = JSONField()
 
 
     objects = UserAccountManager()
