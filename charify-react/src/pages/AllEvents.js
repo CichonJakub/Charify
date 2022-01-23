@@ -111,11 +111,7 @@ class AllEvents extends React.Component {
                 dowolne
               </MenuItem >
               {this.state.charify_event.map((single_event) => (cities.push(single_event.city)))}
-<<<<<<< HEAD
               {unique = cities.filter((x, i, a) => a.indexOf(x) === i)}
-=======
-              {unique = cities.filter((x, i, a) => a.indexOf(x) == i)}
->>>>>>> main
               {unique.map((city, index) => (<MenuItem id="form-search-item" key={index} value={city}>{city}</MenuItem>))}
             </Select>
           </FormControl>

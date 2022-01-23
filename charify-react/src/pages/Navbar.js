@@ -105,20 +105,6 @@ function Navbar({ logout, isAuthenticated, user }) {
                   onClick={closeMobileMenu}
                   style={{ textDecoration: 'none' }}
                 >
-<<<<<<< HEAD
-=======
-                  O nas
-                </Link>
-              </li>
-  
-              <li>
-                <Link
-                  to='/sign-up '
-                  className='nav-links-mobile'
-                  style={{ textDecoration: 'none' }}
-                >
-                  Zaloguj się
->>>>>>> main
                 </Link>
               </li>
               
@@ -126,16 +112,8 @@ function Navbar({ logout, isAuthenticated, user }) {
               
             </ul>
               
-<<<<<<< HEAD
               {isAuthenticated ? authLinks() : guestLinks()}
               
-=======
-              <div style={{paddingBottom:5}}>
-                  <Link to='/sign-up'>
-                    {button && <button style={{paddingBottom:10, paddingLeft:30, paddingRight:30, paddingTop:10, fontSize:20}} className="btn btn-warning btn-lg">Zaloguj się</button>}
-                  </Link>
-              </div>
->>>>>>> main
           </div>
         </nav>
       </>

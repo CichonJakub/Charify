@@ -25,11 +25,7 @@ function SingleEvent(){
                                     <img
                                         className="img-responsive rounded center-block d-block mx-auto"
                                         // className='cards__item__img'
-<<<<<<< HEAD
                                         alt='event'
-=======
-                                        // alt='Travel Image'
->>>>>>> main
                                         src={single_event.photo}
                                     />
                                 </div>
@@ -42,11 +38,7 @@ function SingleEvent(){
                                     <tbody>
                                     <tr>
                                         <th scope="row">Miejsce:</th>
-<<<<<<< HEAD
                                         <td className="text-right">{addr}</td>
-=======
-                                        <td class="text-right">{addr}</td>
->>>>>>> main
                                     </tr>
                                     <tr>
                                         <th scope="row">Organizator:</th>
