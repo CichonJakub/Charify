@@ -10,6 +10,7 @@
 4.Check operation in browser
 	http://localhost:8000/events or http://<SERVER_IP_ADDR>:8000/events
 5.Admin site
+    \charify_django>python manage.py makemigrations
     \charify_django>python manage.py migrate
     \charify_django>python manage.py createsuperuser
     in browser:

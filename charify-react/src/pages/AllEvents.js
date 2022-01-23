@@ -7,8 +7,6 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { Button } from './Button';
-import TextField from "@mui/material/TextField";
 import MainSection from './MainSection';
 
 class AllEvents extends React.Component {
@@ -113,7 +111,7 @@ class AllEvents extends React.Component {
                 dowolne
               </MenuItem >
               {this.state.charify_event.map((single_event) => (cities.push(single_event.city)))}
-              {unique = cities.filter((x, i, a) => a.indexOf(x) == i)}
+              {unique = cities.filter((x, i, a) => a.indexOf(x) === i)}
               {unique.map((city, index) => (<MenuItem id="form-search-item" key={index} value={city}>{city}</MenuItem>))}
             </Select>
           </FormControl>
@@ -131,8 +129,7 @@ class AllEvents extends React.Component {
         <div className="itemList">
           {this.state.charify_event.reverse().map((single_event) => (
             this.checkDisplay(single_event) ?
-              <div>
-                <div key={this.state.qid} id={this.state.qid}>
+                <div key={single_event.id} id={single_event.id}>
                   <div className='cards' >
                   </div>
                   {single_event !== null ?
@@ -153,7 +150,7 @@ class AllEvents extends React.Component {
                     </div>
                   }
                 </div>
-              </div>
+              
               : null
           ))}
         </div>
