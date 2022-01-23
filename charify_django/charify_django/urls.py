@@ -34,10 +34,9 @@ urlpatterns = [
     path('auth/', include('djoser.urls')),
 ]
 
-urlpatterns += [re_path(r'^.*', TemplateView.as_view(template_name = 'index.html'))] # adding re_routest to urls for Front
-
-
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 else:
     urlpatterns += staticfiles_urlpatterns()
+    
+urlpatterns += [re_path(r'^.*', TemplateView.as_view(template_name = 'index.html'))] # adding re_routest to urls for Front
