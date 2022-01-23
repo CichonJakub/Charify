@@ -1,5 +1,11 @@
 import React from 'react';
+<<<<<<< HEAD
 import './Login.css';
+=======
+import axios from "axios";
+import './Login.css';
+import { Link } from 'react-router-dom';
+>>>>>>> main
 
 function Login(){
         return (
