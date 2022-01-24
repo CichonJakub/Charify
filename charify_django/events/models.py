@@ -19,6 +19,7 @@ class Event(models.Model):
     published_date = models.DateTimeField(auto_now_add=True)
     tags = models.CharField(max_length=150, blank=True)
     photo = models.ImageField(blank=True, upload_to='images/')
+    users = models.CharField(max_length=140, default="0", blank=True)
 
     def _str_(self):
         return self.title
