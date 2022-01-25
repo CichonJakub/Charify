@@ -121,3 +121,8 @@ span{
         font-size: calc(6px + 2vmin);
     }
 }
+
+.button1{
+    margin-right: 15px;
+    margin-left: 15px;
+}

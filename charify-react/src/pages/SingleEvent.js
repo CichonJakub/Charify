@@ -176,27 +176,41 @@ function SingleEvent({ user, isAuthenticated }) {
                                 {isLoggedIn() ?
                                     disableButton() ?
                                         <div className="task-wrapper flex-wrapper">
-                                            <button type="button" className="flex-button" disabled={true} onClick={() => decrement()} >Zapisz się</button>
-                                            <button type="button" className="flex-button" disabled={false} onClick={() => increment()}>Wypisz się</button>
+                                            <a style={{padding:10}}>
+                                                <button style={{paddingBottom:10, paddingLeft:30, paddingRight:30, paddingTop:10, fontSize:20}} className="btn btn-warning btn-lg" onClick={() => decrement()} >Zapisz się</button>
+                                            </a>
+                                            <a style={{padding:10}}>
+                                                <button style={{paddingBottom:10, paddingLeft:30, paddingRight:30, paddingTop:10, fontSize:20}} className="btn btn-warning btn-lg" onClick={() => increment()}>Wypisz się</button>
+                                            </a>
+                                            {/* <button type="button" className="flex-button" disabled={true} onClick={() => decrement()} >Zapisz się</button>
+                                            <button type="button" className="flex-button" disabled={false} onClick={() => increment()}>Wypisz się</button> */}
                                         </div>
                                         :
                                         single_event.number_of_people === 0 ?
                                             <div className="task-wrapper flex-wrapper">
-                                                <button type="button" className="flex-button" disabled={true} >Brak miejsc</button>
+                                                <button style={{paddingBottom:10, paddingLeft:30, paddingRight:30, paddingTop:10, fontSize:20}} className="btn btn-warning btn-lg" disabled={true} >Brak miejsc</button>
                                             </div>
                                             :
                                             <div className="task-wrapper flex-wrapper">
-                                                <button type="button" className="flex-button" disabled={false} onClick={() => decrement()} >Zapisz się</button>
-                                                <button type="button" className="flex-button" disabled={true} onClick={() => increment()}>Wypisz się</button>
+                                                <a style={{padding:10}}>
+                                                    <button style={{paddingBottom:10, paddingLeft:30, paddingRight:30, paddingTop:10, fontSize:20}} className="btn btn-warning btn-lg" disabled={false} onClick={() => decrement()} >Zapisz się</button>
+                                                </a>
+                                                <a style={{padding:10}}>
+                                                    <button style={{paddingBottom:10, paddingLeft:30, paddingRight:30, paddingTop:10, fontSize:20}} className="btn btn-warning btn-lg" disabled={true} onClick={() => increment()}>Wypisz się</button>
+                                                </a>
                                             </div>
                                     :
                                     single_event.number_of_people === 0 ?
                                         <div className="task-wrapper flex-wrapper">
-                                            <button type="button" className="flex-button" disabled={true}>Brak miejsc</button>
+                                            <a style={{padding:10}}>
+                                                <button style={{paddingBottom:10, paddingLeft:30, paddingRight:30, paddingTop:10, fontSize:20}} className="btn btn-warning btn-lg" disabled={true}>Brak miejsc</button>
+                                            </a>
                                         </div>
                                         :
                                         <div className="task-wrapper flex-wrapper">
-                                            <button type="button" className="flex-button" onClick={() => notLogged()} >Zapisz się</button>
+                                            <a style={{padding:10}}>
+                                                <button style={{paddingBottom:10, paddingLeft:30, paddingRight:30, paddingTop:10, fontSize:20}} className="btn btn-warning btn-lg" onClick={() => notLogged()} >Zapisz się</button>
+                                            </a>
                                         </div>
                                 }
                             </form>

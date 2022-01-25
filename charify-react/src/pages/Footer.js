@@ -46,7 +46,6 @@ function Footer() {
                         </section>
                     </div>
                     
-                    <h2 style={{paddingLeft:25, fontSize:20}}>Media społecznościowe</h2>
     
                    
                    
