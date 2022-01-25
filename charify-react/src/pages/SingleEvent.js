@@ -177,10 +177,10 @@ function SingleEvent({ user, isAuthenticated }) {
                                     disableButton() ?
                                         <div className="task-wrapper flex-wrapper">
                                             <a style={{padding:10}}>
-                                                <button style={{paddingBottom:10, paddingLeft:30, paddingRight:30, paddingTop:10, fontSize:20}} className="btn btn-warning btn-lg" onClick={() => decrement()} >Zapisz się</button>
+                                                <button style={{paddingBottom:10, paddingLeft:30, paddingRight:30, paddingTop:10, fontSize:20}} className="btn btn-warning btn-lg" disabled={true} onClick={() => decrement()} >Zapisz się</button>
                                             </a>
                                             <a style={{padding:10}}>
-                                                <button style={{paddingBottom:10, paddingLeft:30, paddingRight:30, paddingTop:10, fontSize:20}} className="btn btn-warning btn-lg" onClick={() => increment()}>Wypisz się</button>
+                                                <button style={{paddingBottom:10, paddingLeft:30, paddingRight:30, paddingTop:10, fontSize:20}} className="btn btn-warning btn-lg" disabled={false} onClick={() => increment()}>Wypisz się</button>
                                             </a>
                                             {/* <button type="button" className="flex-button" disabled={true} onClick={() => decrement()} >Zapisz się</button>
                                             <button type="button" className="flex-button" disabled={false} onClick={() => increment()}>Wypisz się</button> */}

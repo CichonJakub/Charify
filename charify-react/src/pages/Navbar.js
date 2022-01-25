@@ -98,15 +98,6 @@ function Navbar({ logout, isAuthenticated, user }) {
                   Zgłoś wydarzenie
                 </Link>
               </li>
-              <li className='nav-item'>
-                <Link
-                  to='/Aboutus'
-                  className='nav-links'
-                  onClick={closeMobileMenu}
-                  style={{ textDecoration: 'none' }}
-                >
-                </Link>
-              </li>
               
                   {ifUserNull()}
               

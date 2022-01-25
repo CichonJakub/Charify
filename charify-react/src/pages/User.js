@@ -18,7 +18,7 @@ function User({ user, isAuthenticated }) {
     const ifUserNull = () => {
         if (user != null && isAuthenticated) {
             return (
-                <div className='container'>
+                <div className='container3'>
                     <h1>Wydarzenia na które jesteś zapisany: </h1>
                     <div><GetEvents id={user.id} /></div>
                 </div>
@@ -27,7 +27,7 @@ function User({ user, isAuthenticated }) {
             return (
                 <div className="container1">
                     <h1>Hej! Nie powinno cię tu być! Zaloguj się :)</h1>
-                    <div style={{padding:10}} className='container2'>
+                    <div style={{padding:30}} className='container2'>
                         <button style={{paddingBottom:10, paddingLeft:30, paddingRight:30, paddingTop:10, fontSize:20}} className="btn btn-warning btn-lg" onClick={() => notLogged()} >Zaloguj się</button>
                     </div>
                 </div>

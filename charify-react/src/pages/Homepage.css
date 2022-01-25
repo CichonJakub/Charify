@@ -2,7 +2,9 @@
     padding: 4rem;
     /* background: rgb(255, 255, 255); */
     /* flex-direction: column; */
-
+  }
+  .cards2{
+    padding: 4px;
   }
 
   
@@ -38,7 +40,6 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
-
     /* max-width: 1120px;
     min-width: 5000px; */
     width: 90%;
@@ -64,6 +65,17 @@
     min-width: 400px;
     min-height: 400px;
   }
+
+  .cards__item2 {
+    display: flex;
+    flex: 3;
+    /* margin: 0 1rem; */
+    border-radius: 10px;
+    text-align: center;
+    min-width: 400px;
+    /* min-height: 400px; */
+  }
+  
   
   .cards__item__link {
     display: flex;
@@ -72,6 +84,19 @@
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.17);
     -webkit-filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.017));
     filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.017));
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+  }
+  .cards__item__link2 {
+    display: flex;
+    text-align: left;
+    flex-flow: column;
+    background: white;
+    width: 700px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.17);
+    /* -webkit-filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.017)); */
+    /* filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.017)); */
     border-radius: 10px;
     overflow: hidden;
     text-decoration: none;
@@ -178,4 +203,8 @@
   .container2{
     text-align: center;
     min-height: 230px;
+  }
+  .container3{
+    text-align: center;
+    min-height: 430px;
   }
