@@ -115,15 +115,6 @@ class AllEvents extends React.Component {
               {unique.map((city, index) => (<MenuItem id="form-search-item" key={index} value={city}>{city}</MenuItem>))}
             </Select>
           </FormControl>
-          {/*<button
-            type="button"
-            className="flex-button"
-            onClick={() => {
-              this.setState({ city_chosen: true }, this.fetchData)
-            }}>
-            Wyświetl eventy z wybranego miasta
-          </button>*/}
-
 
         </div>
         <div className="itemList">

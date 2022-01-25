@@ -19,6 +19,7 @@ function MainSection({user, isAuthenticated}){
             return (
                 <div className='hero-container'>
                     <h1>Witaj {user.name}!</h1>
+                    <p>Sprawdź poniżej, jakie eventy są dostępne!</p>
                 </div>
             )
         }else{
